@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivityService} from '../../shared/activity/activity.service';
 import {ActivityTypes} from '../../shared/activity/activity-types.enum';
-import {ActivityFilterModel} from './activity-filter.model';
+import {ActivityFilterModel} from '../../shared/activity/activity-filter.model';
 
 @Component({
     selector: 'ur-activity-filter',
@@ -9,19 +9,35 @@ import {ActivityFilterModel} from './activity-filter.model';
     styleUrls: ['./activity-filter.component.scss']
 })
 export class ActivityFilterComponent implements OnInit {
-    filters = [new ActivityFilterModel({
-        name: 'Futbolas',
-        filterValue: ActivityTypes.FOOTBALL,
-        selected: false
-    }), new ActivityFilterModel({
-        name: 'Tinklinis',
-        filterValue: ActivityTypes.VOLLEYBALL,
-        selected: false
-    }), new ActivityFilterModel({
-        name: 'Šokiai',
-        filterValue: ActivityTypes.DANCES,
-        selected: false
-    })];
+    filters = {
+        type: [new ActivityFilterModel<ActivityTypes>({
+            name: 'Futbolas',
+            filterValue: ActivityTypes.FOOTBALL,
+            selected: true
+        }), new ActivityFilterModel<ActivityTypes>({
+            name: 'Tinklinis',
+            filterValue: ActivityTypes.VOLLEYBALL,
+            selected: true
+        }), new ActivityFilterModel<ActivityTypes>({
+            name: 'Šokiai',
+            filterValue: ActivityTypes.DANCES,
+            selected: true
+        })],
+        place: [new ActivityFilterModel<string>({
+            name: 'Antakalnis',
+            filterValue: 'Antakalnis',
+            selected: true
+        }), new ActivityFilterModel<string>({
+            name: 'Senamiestis',
+            filterValue: 'Senamiestis',
+            selected: true
+        }), new ActivityFilterModel<string>({
+            name: 'Sauletekis',
+            filterValue: 'Sauletekis',
+            selected: true
+        })],
+    };
+
 
     constructor(private activityService: ActivityService) {
     }
@@ -30,7 +46,10 @@ export class ActivityFilterComponent implements OnInit {
     }
 
     filterActivities() {
-        this.activityService.filterByTypes(this.filters.filter(f => f.selected).map(f => f.filterValue));
+        const selectedTypes = this.filters.type.filter(f => f.selected);
+        const selectedPlaces = this.filters.place.filter(f => f.selected);
+        const types = (selectedTypes.length > 0 ? selectedTypes : this.filters.type).map(f => f.filterValue);
+        const places = (selectedPlaces.length > 0 ? selectedPlaces : this.filters.place).map(f => f.filterValue);
+        this.activityService.filter(types, places);
     }
-
 }

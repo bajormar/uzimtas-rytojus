@@ -1,5 +1,11 @@
 <div>Tipas</div>
-<div *ngFor="let filter of filters">
+<div *ngFor="let filter of filters.type">
+    <mat-checkbox color="primary" [(ngModel)]="filter.selected" (ngModelChange)="filterActivities()">{{filter.name}}
+    </mat-checkbox>
+</div>
+
+<div>Vieta</div>
+<div *ngFor="let filter of filters.place">
     <mat-checkbox color="primary" [(ngModel)]="filter.selected" (ngModelChange)="filterActivities()">{{filter.name}}
     </mat-checkbox>
 </div>

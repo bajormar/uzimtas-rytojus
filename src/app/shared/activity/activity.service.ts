@@ -40,11 +40,14 @@ export class ActivityService {
     constructor() {
     }
 
-    filterByTypes(types: ActivityTypes[]) {
-        if (!types.length) {
+    filter(types: ActivityTypes[], places: string[]) {
+        if (!types.length && !places.length) {
             this.activitiesSubject.next(this.activities);
             return;
         }
-        this.activitiesSubject.next(this.activities.filter(a => types.includes(a.type)));
+        const activities = this.activities.filter(a => {
+            return types.includes(a.type) && places.includes(a.place);
+        });
+        this.activitiesSubject.next(activities);
     }
 }
