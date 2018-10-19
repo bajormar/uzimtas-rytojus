@@ -12,12 +12,15 @@
 .filter {
     max-width: 200px;
     min-width: 200px;
+    border-right: 1px solid #dee2e6 !important
 }
 
-.activities {}
+.activities {
+    border-right: 1px solid #dee2e6 !important
+}
 
 .map {
     overflow: hidden;
     display: block;
-    background-color: red;
+    min-width: 50%;
 }

@@ -24,6 +24,8 @@ export class MapComponent implements OnInit {
             zoom: 10,
             style: 'mapbox://styles/mapbox/streets-v9'
         });
+
+        // setTimeout(() => this.map.resize());
     }
 }
 
