@@ -15,6 +15,7 @@ import {MapsModule} from './maps/maps.module';
         AppRoutingModule,
         MatButtonModule,
         HomePageModule,
+        MapsModule,
     ],
     declarations: [
         AppComponent

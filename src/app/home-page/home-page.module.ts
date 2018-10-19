@@ -4,6 +4,7 @@ import {HomePageComponent} from './home-page.component';
 import {MatCardModule, MatToolbarModule} from '@angular/material';
 import {ActivityFilterModule} from './activity-filter/activity-filter.module';
 import {ActivityListModule} from './activity-list/activity-list.module';
+import {MapsModule} from '../maps/maps.module';
 
 @NgModule({
     imports: [
@@ -12,6 +13,8 @@ import {ActivityListModule} from './activity-list/activity-list.module';
         MatCardModule,
         ActivityFilterModule,
         ActivityListModule,
+
+        MapsModule,
     ],
     declarations: [HomePageComponent]
 })
