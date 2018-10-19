@@ -9,9 +9,10 @@ import {BehaviorSubject} from 'rxjs';
 export class ActivityService {
 
     private activities = [new ActivityModel({
-        name: 'Futbolas kosmose',
+        name: 'Vilniaus futbolo mokykla "ŽAIBAS"',
+        imageSrc: 'https://cdn.images.express.co.uk/img/dynamic/67/590x/Heung-min-Son-925466.jpg',
         type: ActivityTypes.FOOTBALL,
-        description: 'Labai idomu, spardom kamuoli',
+        description: 'Vilniaus FM "ŽAIBAS" ištakas reikėtų laikyti 2006 m. rudenį, kai buvo įkurta Vilniaus m. Žalgirio - A. Narbekovo futbolo mokykla, kadangi dauguma dabartinės mokyklos komandos sudaro buvę Žalgirio - A. Narbekovo futbolo mokyklos vaikai. Vilniaus FM "ŽAIBAS',
         price: 10,
         date: '2018/10/20',
         duration: '1h',
@@ -19,9 +20,10 @@ export class ActivityService {
         positionLongitude: 25.279652,
         positionLatitude: 54.687157,
     }), new ActivityModel({
-        name: 'Tinklinis ant smelio',
+        name: 'Tinklinio akademija',
+        imageSrc: 'https://g4.dcdn.lt/images/pix/delfi-tinklinio-turnyras-75293703.jpg',
         type: ActivityTypes.VOLLEYBALL,
-        description: 'Netiek idomu, dauzom kamuoli',
+        description: 'Tinklinio treniruotės Vilniuje vyksta pagal specialią mėgėjams sudarytą programa. Tiklinis Vilniuje vis populiarėja. Tinklinis - treniruotės specialiai tau.',
         price: 50,
         date: '2018/10/30',
         duration: '2h',
@@ -29,9 +31,10 @@ export class ActivityService {
         positionLongitude: 25.179652,
         positionLatitude: 54.187157,
     }), new ActivityModel({
-        name: 'Lotynu sokiai',
+        name: 'Karibų šokių pamokos',
+        imageSrc: 'http://www.satrijosklubas.lt/wp-content/uploads/Sokiai/Gatves-sokiai-vaikai-2.jpg',
         type: ActivityTypes.DANCES,
-        description: 'Super muzika',
+        description: 'Šokių programa skirta jaunimui, suaugusiems bei senjorams. Išmokus keletą žingsnelių jau puikiai jausitės šokių pokyliuose ir vakarėliuose, o po 4-5 mėnesių jau galėsite dalyvauti ir hobi lygio varžybose',
         price: 0,
         date: '2018/10/21',
         duration: '1,5h',

@@ -1,16 +1,19 @@
-<div class="row border mb-3 py-2">
-    <div class="col-sm-4">
-        <img style="width: 100%; height: 100px"
-             src="https://via.placeholder.com/350x150">
-        <div class="text-center">{{activity.name}}</div>
-    </div>
-    <div class="col-sm-4">
-        <div>{{activity.price}} EUR</div>
-        <div>{{activity.description}}</div>
-    </div>
-    <div class="col-sm-4">
-        <div>{{activity.date}}</div>
-        <div>{{activity.duration}}</div>
-        <div>{{activity.place}}</div>
-    </div>
-</div>
+<mat-card class="my-3 p-0">
+    <mat-card-content class="activity-item">
+        <div class="row">
+            <div class="col-sm-4 pr-0">
+                <img style="width: 100%; height: 100%"
+                     [src]="activity.imageSrc">
+
+            </div>
+            <div class="col-sm-8">
+                <div class="p-2">
+                    <h5>{{activity.name}}</h5>
+                    <div>{{activity.place}} - {{activity.date}} - {{activity.duration}}</div>
+                    <small class="text-muted font-xs">{{activity.description | truncate : 150 : "…"}}</small>
+                    <h5 class="text-right font-weight-bold text-success">{{activity.price}} €</h5>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

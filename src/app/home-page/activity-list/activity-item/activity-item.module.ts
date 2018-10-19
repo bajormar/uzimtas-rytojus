@@ -1,12 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ActivityItemComponent } from './activity-item.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ActivityItemComponent} from './activity-item.component';
+import {MatCardModule} from '@angular/material';
+import {TruncateModule} from '@yellowspot/ng-truncate';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [ActivityItemComponent],
-  exports: [ActivityItemComponent]
+    imports: [
+        CommonModule,
+        MatCardModule,
+        TruncateModule,
+    ],
+    declarations: [ActivityItemComponent],
+    exports: [ActivityItemComponent]
 })
-export class ActivityItemModule { }
+export class ActivityItemModule {
+}

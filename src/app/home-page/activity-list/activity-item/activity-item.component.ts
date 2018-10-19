@@ -15,5 +15,4 @@ export class ActivityItemComponent implements OnInit {
 
     ngOnInit() {
     }
-
 }
