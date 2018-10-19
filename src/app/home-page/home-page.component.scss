@@ -11,13 +11,10 @@
 
 .filter {
     max-width: 200px;
-
-    background-color: yellow;
+    min-width: 200px;
 }
 
-.activities {
-    background-color: green;
-}
+.activities {}
 
 .map {
     overflow: hidden;
