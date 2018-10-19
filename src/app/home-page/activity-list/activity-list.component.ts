@@ -1,40 +1,29 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivityModel} from '../../shared/activity/activity.model';
+import {ActivityService} from '../../shared/activity/activity.service';
+import {Subscription} from 'rxjs';
 
 @Component({
     selector: 'ur-activity-list',
     templateUrl: './activity-list.component.html',
     styleUrls: ['./activity-list.component.scss']
 })
-export class ActivityListComponent implements OnInit {
+export class ActivityListComponent implements OnInit, OnDestroy {
 
-    activities = [new ActivityModel({
-        name: 'Futbolas',
-        description: 'Labai idomu, spardom kamuoli',
-        price: 10,
-        date: '2018/10/20',
-        duration: '1h',
-        place: 'Antakalnis',
-    }), new ActivityModel({
-        name: 'Tinklinis',
-        description: 'Netiek idomu, dauzom kamuoli',
-        price: 50,
-        date: '2018/10/30',
-        duration: '2h',
-        place: 'Senamiestis',
-    }), new ActivityModel({
-        name: 'Sokiai',
-        description: 'Super muzika',
-        price: 0,
-        date: '2018/10/21',
-        duration: '1,5h',
-        place: 'Sauletekis',
-    })];
+    activities: ActivityModel[];
+    activitiesSubscription: Subscription;
 
-    constructor() {
+    constructor(private activityService: ActivityService) {
     }
 
     ngOnInit() {
+        this.activitiesSubscription = this.activityService.activitiesObservable.subscribe((activities) => {
+            this.activities = activities;
+        });
+    }
+
+    ngOnDestroy() {
+        this.activitiesSubscription.unsubscribe();
     }
 
 }

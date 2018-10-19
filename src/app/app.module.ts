@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material';
 import {HomePageModule} from './home-page/home-page.module';
 import {MapsModule} from './maps/maps.module';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import {MapsModule} from './maps/maps.module';
         MatButtonModule,
         HomePageModule,
         MapsModule,
+        SharedModule,
     ],
     declarations: [
         AppComponent
