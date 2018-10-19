@@ -9,6 +9,9 @@ export class ActivityModel {
     date: string;
     place: string;
 
+    positionLongitude: number; // Kaire desine
+    positionLatitude: number; // Virsus apacia
+
     constructor(data?: ActivityModel) {
         Object.assign(this, data);
     }

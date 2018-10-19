@@ -16,6 +16,8 @@ export class ActivityService {
         date: '2018/10/20',
         duration: '1h',
         place: 'Antakalnis',
+        positionLongitude: 25.279652,
+        positionLatitude: 54.687157,
     }), new ActivityModel({
         name: 'Tinklinis ant smelio',
         type: ActivityTypes.VOLLEYBALL,
@@ -24,6 +26,8 @@ export class ActivityService {
         date: '2018/10/30',
         duration: '2h',
         place: 'Senamiestis',
+        positionLongitude: 25.179652,
+        positionLatitude: 54.187157,
     }), new ActivityModel({
         name: 'Lotynu sokiai',
         type: ActivityTypes.DANCES,
@@ -32,6 +36,8 @@ export class ActivityService {
         date: '2018/10/21',
         duration: '1,5h',
         place: 'Sauletekis',
+        positionLongitude: 25.159652,
+        positionLatitude: 54.607157,
     })];
 
     private activitiesSubject = new BehaviorSubject<ActivityModel[]>(this.activities);

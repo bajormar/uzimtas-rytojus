@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MapComponent } from './map/map.component';
 import { MapLayoutComponent } from './map-layout/map-layout.component';
 import {RouterModule} from '@angular/router';
+import { MapMarkerComponent } from './map-marker/map-marker.component';
 
 @NgModule({
     imports: [
@@ -11,7 +12,8 @@ import {RouterModule} from '@angular/router';
     ],
     declarations: [
         MapComponent,
-        MapLayoutComponent
+        MapLayoutComponent,
+        MapMarkerComponent
     ],
     exports: [
         MapComponent
