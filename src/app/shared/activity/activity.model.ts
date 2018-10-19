@@ -1,5 +1,8 @@
+import {ActivityTypes} from './activity-types.enum';
+
 export class ActivityModel {
     name: string;
+    type: ActivityTypes;
     description: string;
     price: number;
     duration: string;

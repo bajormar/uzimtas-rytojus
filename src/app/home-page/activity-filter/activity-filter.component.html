@@ -1,1 +1,5 @@
-Programavimas vyksta
+<div>Tipas</div>
+<div *ngFor="let filter of filters">
+    <mat-checkbox color="primary" [(ngModel)]="filter.selected" (ngModelChange)="filterActivities()">{{filter.name}}
+    </mat-checkbox>
+</div>
