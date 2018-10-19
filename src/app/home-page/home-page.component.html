@@ -1,33 +1,17 @@
-<mat-toolbar color="primary">
-    <span>Užimtas rytojus</span>
-</mat-toolbar>
+<div class="d-flex flex-column h-100">
+    <mat-toolbar color="primary">
+        <span>Užimtas rytojus</span>
+    </mat-toolbar>
 
-<div class="container-fluid">
-    <div class="row mt-4">
-        <div class="col-sm-3">
-            <mat-card>
-                <mat-card-title>Filtrai</mat-card-title>
-                <mat-card-content>
-                    <ur-activity-filter></ur-activity-filter>
-                </mat-card-content>
-            </mat-card>
+    <div class="d-flex flex-fill">
+        <div class="filter">
+            <ur-activity-filter></ur-activity-filter>
         </div>
-        <div class="col-sm-5">
-            <mat-card>
-                <mat-card-title>Veiklos</mat-card-title>
-                <mat-card-content>
-                    <ur-activity-list></ur-activity-list>
-                </mat-card-content>
-            </mat-card>
+        <div class="activities flex-fill">
+            <ur-activity-list></ur-activity-list>
         </div>
-        <div class="col-sm-4">
-            <mat-card>
-                <mat-card-title>Žemėlapis</mat-card-title>
-                <mat-card-content>
-                    <ur-map></ur-map>
-                </mat-card-content>
-            </mat-card>
+        <div class="map flex-fill">
+            <ur-map></ur-map>
         </div>
     </div>
 </div>
-
