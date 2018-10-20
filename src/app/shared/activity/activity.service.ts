@@ -64,6 +64,7 @@ const activities = [
             name: 'Vardenis Pavardenis',
             image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
             phone: '+370 123 12345',
+            email: 'vardenis.pavardenis@gmail.com',
         },
     }),
     new ActivityModel({
@@ -82,6 +83,7 @@ const activities = [
             name: 'Vardenis Pavardenis',
             image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
             phone: '+370 123 12345',
+            email: 'vardenis.pavardenis@gmail.com',
         },
     }),
     new ActivityModel({
@@ -100,6 +102,7 @@ const activities = [
             name: 'Vardenis Pavardenis',
             image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
             phone: '+370 123 12345',
+            email: 'vardenis.pavardenis@gmail.com',
         },
     }),
     new ActivityModel({
@@ -118,6 +121,7 @@ const activities = [
             name: 'Vardenis Pavardenis',
             image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
             phone: '+370 123 12345',
+            email: 'vardenis.pavardenis@gmail.com',
         },
     }),
     new ActivityModel({
@@ -136,6 +140,7 @@ const activities = [
             name: 'Vardenis Pavardenis',
             image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
             phone: '+370 123 12345',
+            email: 'vardenis.pavardenis@gmail.com',
         },
     }),
     new ActivityModel({
@@ -154,6 +159,7 @@ const activities = [
             name: 'Vardenis Pavardenis',
             image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
             phone: '+370 123 12345',
+            email: 'vardenis.pavardenis@gmail.com',
         },
     })
 ];
