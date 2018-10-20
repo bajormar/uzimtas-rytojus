@@ -37,7 +37,7 @@ export class MapComponent implements OnInit {
         //     console.log(e);
         // });
 
-        this.mapService.map.on('load', () => (() => this.test()).bind(this));
+        this.mapService.map.on('load', () => this.test());
 
         this.activityService.activitiesObservable.subscribe((activities) => {
             this.activities = activities;
@@ -46,6 +46,8 @@ export class MapComponent implements OnInit {
 
     public test() {
         const activityService = this.activityService;
+
+        console.log(activityService);
 
         this.mapService.map.addSource('activities', {
             type: 'geojson',
