@@ -32,8 +32,10 @@ export class ActivityService {
     }
 
     updateFilter(filterId: number, selected: boolean) {
-        const filter = this.filtersSubject.getValue().find(f => f.id === filterId);
+        const filters = [...this.filtersSubject.getValue()];
+        const filter = filters.find(f => f.id === filterId);
         filter.selected = selected;
+        this.filtersSubject.next(filters);
     }
 
     filterActivities() {

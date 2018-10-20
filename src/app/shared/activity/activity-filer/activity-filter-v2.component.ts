@@ -74,6 +74,8 @@ export class ActivityFilterV2Component implements OnInit {
             ...this.form.get('genders').value
         ];
 
+        this.activityService.clearFilters();
+
         activeFiltersIds.forEach(filterId => {
             this.activityService.updateFilter(filterId, true);
         });
