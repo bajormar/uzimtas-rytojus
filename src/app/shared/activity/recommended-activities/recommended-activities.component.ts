@@ -6,7 +6,7 @@ import {UserModel} from '../../user/user.model';
 @Component({
     selector: 'ur-recommended-activities',
     templateUrl: './recommended-activities.component.html',
-    styleUrls: ['./recommended-activities.component.scss']
+    styleUrls: ['./recommended-activities.component.scss'],
 })
 export class RecommendedActivitiesComponent implements OnInit {
 
