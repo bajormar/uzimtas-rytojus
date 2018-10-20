@@ -19,7 +19,7 @@ export class LandingPageComponent implements OnInit {
     ngOnInit() {
         this.activityService.clearFilters();
 
-        this.backgroundImage = backgroundImages[this.getRndInteger(5, 7)];
+        this.backgroundImage = backgroundImages[this.getRndInteger(0, 7)];
 
         this.activityService.activitiesObservable.subscribe((activities) => {
             this.activities = [...activities].splice(0, 6);
