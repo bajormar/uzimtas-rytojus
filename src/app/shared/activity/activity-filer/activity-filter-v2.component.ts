@@ -16,12 +16,14 @@ export class ActivityFilterV2Component implements OnInit {
     public form = new FormGroup({
         types: new FormControl([]),
         places: new FormControl([]),
-        times: new FormControl([])
+        times: new FormControl([]),
+        genders: new FormControl([])
     });
 
     typeFilters: ActivityFilterModel[] = [];
     placeFilters: ActivityFilterModel[] = [];
     timeFilters: ActivityFilterModel[] = [];
+    genderFilters: ActivityFilterModel[] = [];
 
     constructor(private router: Router, private activityService: ActivityService) {
     }
@@ -31,10 +33,12 @@ export class ActivityFilterV2Component implements OnInit {
             this.typeFilters = filters.filter(f => f.type === 'type');
             this.placeFilters = filters.filter(f => f.type === 'place');
             this.timeFilters = filters.filter(f => f.type === 'time');
+            this.genderFilters = filters.filter(f => f.type === 'gender');
 
             this.form.get('types').setValue(this.typeFilters.filter(f => f.selected).map(f => f.id));
             this.form.get('places').setValue(this.placeFilters.filter(f => f.selected).map(f => f.id));
             this.form.get('times').setValue(this.timeFilters.filter(f => f.selected).map(f => f.id));
+            this.form.get('genders').setValue(this.genderFilters.filter(f => f.selected).map(f => f.id));
         });
     }
 
@@ -42,18 +46,14 @@ export class ActivityFilterV2Component implements OnInit {
         this.submitted = true;
         this.activityService.clearFilters();
 
-        const typeFilterIds = this.form.get('types').value;
-        typeFilterIds.forEach(filterId => {
-            this.activityService.updateFilter(filterId, true);
-        });
+        const activeFiltersIds = [
+            ...this.form.get('types').value,
+            ...this.form.get('places').value,
+            ...this.form.get('times').value,
+            ...this.form.get('genders').value
+        ];
 
-        const placeFilterIds = this.form.get('places').value;
-        placeFilterIds.forEach(filterId => {
-            this.activityService.updateFilter(filterId, true);
-        });
-
-        const timeFilterIds = this.form.get('times').value;
-        timeFilterIds.forEach(filterId => {
+        activeFiltersIds.forEach(filterId => {
             this.activityService.updateFilter(filterId, true);
         });
 

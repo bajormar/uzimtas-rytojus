@@ -28,9 +28,8 @@
             <span class="p-2"></span>
 
             <mat-form-field>
-                <mat-select placeholder="Amžius">
-                    <mat-option value="children">Vaikams</mat-option>
-                    <mat-option value="adult">Suaugusiems</mat-option>
+                <mat-select placeholder="Lytis" [formControl]="form.get('genders')" multiple>
+                    <mat-option *ngFor="let filter of genderFilters" [value]="filter.id">{{filter.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
 

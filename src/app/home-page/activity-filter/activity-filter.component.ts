@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivityService} from '../../shared/activity/activity.service';
-import {ActivityTypes} from '../../shared/activity/activity-types.enum';
+import {ActivityType} from '../../shared/activity/activity-type.enum';
 import {ActivityFilterModel} from '../../shared/activity/activity-filter.model';
 
 @Component({
