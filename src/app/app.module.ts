@@ -14,6 +14,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivityModule} from './shared/activity/activity.module';
 import { LayoutComponent } from './layout/layout.component';
+import { LandingActivityFilterComponent } from './landing-page/landing-activity-filter/landing-activity-filter.component';
 
 @NgModule({
     imports: [
@@ -38,7 +39,8 @@ import { LayoutComponent } from './layout/layout.component';
     declarations: [
         AppComponent,
         LandingPageComponent,
-        LayoutComponent
+        LayoutComponent,
+        LandingActivityFilterComponent
     ],
     providers: [],
     bootstrap: [AppComponent]

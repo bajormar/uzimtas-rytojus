@@ -1,0 +1,52 @@
+<div class="section-cover d-flex align-items-center h-100">
+    <div style="max-height: 400px">
+        <form (ngSubmit)="onSubmit()">
+            <mat-card class="ml-5" style="min-width: 400px">
+                <mat-card-title>
+                    Surask veiklą
+                </mat-card-title>
+                <mat-card-content>
+                    <div class="row">
+                        <mat-form-field class="col-sm-6 filter-field">
+                            <mat-select placeholder="Sporto šaka" [formControl]="form.get('types')" multiple>
+                                <mat-option *ngFor="let filter of typeFilters" [value]="filter.id">{{filter.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="col-sm-6 filter-field">
+                            <mat-select placeholder="Veiklos vieta" [formControl]="form.get('places')" multiple>
+                                <mat-option *ngFor="let filter of placeFilters" [value]="filter.id">{{filter.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row">
+
+                        <mat-form-field class="col-sm-6 filter-field">
+                            <mat-select placeholder="Laikas" [formControl]="form.get('times')" multiple>
+                                <mat-option *ngFor="let filter of timeFilters" [value]="filter.id">{{filter.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="col-sm-6 filter-field">
+                            <mat-select placeholder="Lytis" [formControl]="form.get('genders')" multiple>
+                                <mat-option *ngFor="let filter of genderFilters" [value]="filter.id">{{filter.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                    <button mat-raised-button color="primary">
+                        Ieškoti
+                    </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+
+    </div>
+
+</div>

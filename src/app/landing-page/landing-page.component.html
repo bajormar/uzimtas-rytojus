@@ -14,59 +14,9 @@
     </div>
     <div class="section-cover filter"></div>
     <div class="section-cover d-flex align-items-center">
-        <div style="max-height: 400px">
-            <form>
-                <mat-card class="ml-5" style="min-width: 400px">
-                    <mat-card-header>
-                        <mat-card-title>
-                            Surask veiklą
-                        </mat-card-title>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <div class="row">
-                            <mat-form-field class="col-sm-6 filter-field">
-                                <mat-select placeholder="Sporto šaka" multiple>
-                                    <!--<mat-option *ngFor="let filter of typeFilters" [value]="filter.id">{{filter.name}}-->
-                                    <!--</mat-option>-->
-                                </mat-select>
-                            </mat-form-field>
-
-                            <mat-form-field class="col-sm-6 filter-field">
-                                <mat-select placeholder="Veiklos vieta" multiple>
-                                    <!--<mat-option *ngFor="let filter of placeFilters" [value]="filter.id">{{filter.name}}-->
-                                    <!--</mat-option>-->
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-
-                        <div class="row">
-
-                            <mat-form-field class="col-sm-6 filter-field">
-                                <mat-select placeholder="Laikas" multiple>
-                                    <!--<mat-option *ngFor="let filter of timeFilters" [value]="filter.id">{{filter.name}}-->
-                                    <!--</mat-option>-->
-                                </mat-select>
-                            </mat-form-field>
-
-                            <mat-form-field class="col-sm-6 filter-field">
-                                <mat-select placeholder="Lytis" multiple>
-                                    <!--<mat-option *ngFor="let filter of genderFilters" [value]="filter.id">{{filter.name}}-->
-                                    <!--</mat-option>-->
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button mat-raised-button color="primary" routerLink="/results">
-                            Ieškoti
-                        </button>
-                    </mat-card-actions>
-                </mat-card>
-            </form>
-
-        </div>
-
+        <ur-landing-activity-filter></ur-landing-activity-filter>
     </div>
+
 </div>
 
 <div class="container pt-4">
