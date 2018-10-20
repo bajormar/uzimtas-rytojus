@@ -65,6 +65,7 @@ export class ActivityService {
 
     clearFilters() {
         this.filters = this.filters.map(f => ({...f, selected: false}));
+        this.activitiesSubject.next(activitiesData);
     }
 }
 

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivityService} from '../shared/activity/activity.service';
 
 @Component({
     selector: 'ur-landing-page',
@@ -7,8 +8,9 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
-    constructor() { }
+    constructor(private activityService: ActivityService) { }
 
-    ngOnInit() {}
-
+    ngOnInit() {
+        this.activityService.clearFilters();
+    }
 }
