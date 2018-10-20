@@ -1,7 +1,9 @@
-.available-days {
-    font-weight: bold;
-
-    .available {
-        color: rgba(50, 150, 0, 0.81);
-    }
+.type-bar {
+    margin-top: -60px;
+    background-color: rgba(212, 212, 212, 0.7);
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 10px;
 }

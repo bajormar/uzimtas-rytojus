@@ -1,8 +1,8 @@
 export enum ActivityTypes {
-    FOOTBALL = 'FOOTBALL',
-    VOLLEYBALL = 'VOLLEYBALL',
-    DANCES = 'DANCES',
-    PAINT_BALL = 'PAINT_BALL',
-    ESCAPE_ROOM = 'ESCAPE_ROOM',
-    SWIMMING_POOL = 'SWIMMING_POOL'
+    FOOTBALL = 'Futbolas',
+    VOLLEYBALL = 'Tinklinis',
+    DANCES = 'Šokiai',
+    PAINT_BALL = 'Dažasvydis',
+    ESCAPE_ROOM = 'Pabėgimo kambarys',
+    SWIMMING_POOL = 'Baseinas'
 }
