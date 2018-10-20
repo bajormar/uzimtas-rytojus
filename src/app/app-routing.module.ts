@@ -5,6 +5,7 @@ import {MapLayoutComponent} from './maps/map-layout/map-layout.component';
 import {MapComponent} from './maps/map/map.component';
 import {ActivityDetailsComponent} from './activity-details/activity-details.component';
 import {LandingPageComponent} from './landing-page/landing-page.component';
+import {LayoutComponent} from './layout/layout.component';
 
 const routes: Routes = [
     {
@@ -12,23 +13,29 @@ const routes: Routes = [
         component: LandingPageComponent
     },
     {
-        path: 'results',
-        component: HomePageComponent
-    },
-    {
-        path: 'details/:id',
-        component: ActivityDetailsComponent
-    },
-    {
-        path: 'map',
-        component: MapLayoutComponent,
+        path: '',
+        component: LayoutComponent,
         children: [
             {
-                path: '',
-                component: MapComponent,
+                path: 'results',
+                component: HomePageComponent
+            },
+            {
+                path: 'details/:id',
+                component: ActivityDetailsComponent
+            },
+            {
+                path: 'map',
+                component: MapLayoutComponent,
+                children: [
+                    {
+                        path: '',
+                        component: MapComponent,
+                    }
+                ]
             }
         ]
-    },
+    }
 ];
 
 @NgModule({

@@ -13,6 +13,7 @@ import {RouterModule} from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivityModule} from './shared/activity/activity.module';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
     imports: [
@@ -36,7 +37,8 @@ import {ActivityModule} from './shared/activity/activity.module';
     ],
     declarations: [
         AppComponent,
-        LandingPageComponent
+        LandingPageComponent,
+        LayoutComponent
     ],
     providers: [],
     bootstrap: [AppComponent]
