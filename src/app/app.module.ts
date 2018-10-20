@@ -23,6 +23,7 @@ import {RouterModule} from '@angular/router';
         ActivityDetailsModule,
         MatToolbarModule,
         RouterModule,
+        MatButtonModule
     ],
     declarations: [
         AppComponent
