@@ -15,6 +15,7 @@ export class ActivityModel {
     gender: Gender[];
     date: Date;
     place: string;
+    address: string;
 
     contactDetails: {
         name: string;
@@ -38,6 +39,7 @@ export class ActivityModel {
         positionLongitude: number;
         positionLatitude: number;
         gender: Gender[];
+        address: string;
 
         contactDetails: {
             name: string;
