@@ -11,17 +11,13 @@ import {Gender} from './gender.enum';
 })
 export class ActivityService {
 
-    private activities = activitiesData;
-    private filters = activityFiltersData;
-
-    private activitiesSubject = new BehaviorSubject<ActivityModel[]>(this.activities);
+    private activitiesSubject = new BehaviorSubject<ActivityModel[]>(activitiesData);
     activitiesObservable = this.activitiesSubject.asObservable();
 
-    private filtersSubject = new BehaviorSubject<ActivityFilterModel[]>(this.filters);
+    private filtersSubject = new BehaviorSubject<ActivityFilterModel[]>(activityFiltersData);
     filtersObservable = this.filtersSubject.asObservable();
 
-    constructor() {
-    }
+    constructor() {}
 
     private isActivityBeforeTime(activityDate: Date, timeFrom: number) {
         const hours = activityDate.getHours();
@@ -36,15 +32,16 @@ export class ActivityService {
     }
 
     updateFilter(filterId: number, selected: boolean) {
-        const filter = this.filters.find(f => f.id === filterId);
+        const filter = this.filtersSubject.getValue().find(f => f.id === filterId);
         filter.selected = selected;
     }
 
     filterActivities() {
-        const typeFilters = this.filters.filter(f => f.type === 'type');
-        const placeFilters = this.filters.filter(f => f.type === 'place');
-        const timeFilters = this.filters.filter(f => f.type === 'time');
-        const genderFilters = this.filters.filter(f => f.type === 'gender');
+        const filters = this.filtersSubject.getValue();
+        const typeFilters = filters.filter(f => f.type === 'type');
+        const placeFilters = filters.filter(f => f.type === 'place');
+        const timeFilters = filters.filter(f => f.type === 'time');
+        const genderFilters = filters.filter(f => f.type === 'gender');
 
         const types = typeFilters.filter(f => f.selected).map(f => f.value);
         const places = placeFilters.filter(f => f.selected).map(f => f.value);
@@ -65,11 +62,12 @@ export class ActivityService {
     }
 
     getActivity(activityId: number): ActivityModel {
-        return this.activities.find(a => a.id === activityId);
+        return activitiesData.find(a => a.id === activityId);
     }
 
     clearFilters() {
-        this.filters = this.filters.map(f => ({...f, selected: false}));
+        const filters = this.filtersSubject.getValue().map(f => ({...f, selected: false}));
+        this.filtersSubject.next(filters);
         this.activitiesSubject.next(activitiesData);
     }
 }

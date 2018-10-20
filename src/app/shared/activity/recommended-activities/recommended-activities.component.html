@@ -6,7 +6,9 @@
     <div class="col-sm-4 my-3" *ngFor="let activity of activities">
         <mat-card class="h-100 pb-2 pt-0">
             <img mat-card-image class="my-0" [src]="activity.imageSrc" alt="">
-            <button mat-mini-fab class="star-button" color="primary"><mat-icon >star_border</mat-icon></button>
+            <button mat-mini-fab class="star-button" color="primary" (click)="changeStarState(activity.id)">
+                <mat-icon>{{user.starredActivities.includes(activity.id) ? 'star' : 'star_border'}}</mat-icon>
+            </button>
 
             <div class="type-bar">{{activity.type}}</div>
             <mat-card-content class="pt-2">

@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivityModel} from '../activity.model';
+import {UserService} from '../../user/user.service';
+import {UserModel} from '../../user/user.model';
 
 @Component({
     selector: 'ur-recommended-activities',
@@ -10,8 +12,17 @@ export class RecommendedActivitiesComponent implements OnInit {
 
     @Input() activities: ActivityModel[];
 
-    constructor() {}
+    user: UserModel;
 
-    ngOnInit() {}
+    constructor(private userService: UserService) {}
 
+    ngOnInit() {
+        this.userService.userObservable.subscribe(user => {
+            this.user = user;
+        });
+    }
+
+    changeStarState(activityId: number) {
+        this.userService.starActivity(activityId);
+    }
 }
