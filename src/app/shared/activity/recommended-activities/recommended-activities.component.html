@@ -9,8 +9,9 @@
             <mat-card-content>
                 <div style="min-height: 40px">
                     <div class="d-flex">
-                        <b style="text-transform: uppercase">{{ activity.name }}</b>
-                        <span class="flex-fill"></span>
+                        <h6 style="text-transform: uppercase">
+                            <a [routerLink]="['details', activity.id]">{{activity.name}}</a>
+                        </h6>
                     </div>
                     <div class="d-flex justify-content-between pt-2 available-days">
                         <div class="available">P</div>

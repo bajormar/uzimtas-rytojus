@@ -43,18 +43,17 @@ export class ActivityService {
         const placeFilters = this.filters.filter(f => f.type === 'place');
         const timeFilters = this.filters.filter(f => f.type === 'time');
 
-        const selectedTypes = typeFilters.filter(f => f.selected);
-        const selectedPlaces = placeFilters.filter(f => f.selected);
-        const selectedTimes = timeFilters.filter(f => f.selected);
-
-        const types = (selectedTypes.length > 0 ? selectedTypes : typeFilters).map(f => f.value);
-        const places = (selectedPlaces.length > 0 ? selectedPlaces : placeFilters).map(f => f.value);
-        const times = (selectedTimes.length > 0 ? selectedTimes : timeFilters).map(f => f.value);
+        const types = typeFilters.filter(f => f.selected).map(f => f.value);
+        const places = placeFilters.filter(f => f.selected).map(f => f.value);
+        const times = timeFilters.filter(f => f.selected).map(f => f.value);
 
         const activities = activitiesData.filter(a => {
-            return types.includes(a.type) &&
-                places.includes(a.place) &&
-                times.some(time => this.isActivityBeforeTime(a.date, time.from) && this.isActivityAfterTime(a.date, time.to));
+            const typeMatches = types.length === 0 || types.includes(a.type);
+            const placeMatches = places.length === 0 || places.includes(a.place);
+            const timeMatches = times.length === 0 || times.some(time =>
+                this.isActivityBeforeTime(a.date, time.from) && this.isActivityAfterTime(a.date, time.to)
+            );
+            return typeMatches && placeMatches && timeMatches;
         });
         this.activitiesSubject.next(activities);
     }
@@ -125,26 +124,8 @@ const activitiesData = [
         },
     }),
     new ActivityModel({
-        name: 'Choras Ugnelė',
-        imageSrc: 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fciurlioniofestivalis.files.wordpress.com%2F2013%2F05%2Faukuras.jpg',
-        type: ActivityTypes.ESCAPE_ROOM,
-        description: 'Pabėgimo kambarys „Užkoduota“ – tai erdvė, kurioje jūs būsite užrakinti ir, spręsdami galvosūkius, ieškodami užuominų ir pasitelkdami savo logiką, turėsite iš jo pabėgti.',
-        price: 40,
-        date: new Date(2018, 9, 23, 19, 0, 0, 0),
-        duration: '1,5h',
-        place: 'Sauletekis',
-        positionLongitude: 25.24709701540803,
-        positionLatitude: 54.70899092953229,
-        contactDetails: {
-            name: 'Vardenis Pavardenis',
-            image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
-            phone: '+370 123 12345',
-            email: 'vardenis.pavardenis@gmail.com',
-        },
-    }),
-    new ActivityModel({
         imageSrc: 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fg3.dcdn.lt%2Fimages%2Fpix%2Ftreniruote-plaukimo-baseine-62335895.jpg',
-        name: 'BASEINAS "Olimpinė pradžia"',
+        name: 'Baseinas "Olimpinė pradžia"',
         type: ActivityTypes.SWIMMING_POOL,
         description: 'Pabėgimo kambarys „Užkoduota“ – tai erdvė, kurioje jūs būsite užrakinti ir, spręsdami galvosūkius, ieškodami užuominų ir pasitelkdami savo logiką, turėsite iš jo pabėgti.',
         price: 10,
@@ -252,66 +233,70 @@ const activitiesData = [
     })
 ];
 
-const activityFiltersData = [
-    new ActivityFilterModel({
-        name: 'Futbolas',
-        type: 'type',
-        value: ActivityTypes.FOOTBALL,
-        selected: false
-    }), new ActivityFilterModel({
-        name: 'Tinklinis',
-        type: 'type',
-        value: ActivityTypes.VOLLEYBALL,
-        selected: false
-    }), new ActivityFilterModel({
-        name: 'Šokiai',
-        type: 'type',
-        value: ActivityTypes.DANCES,
-        selected: false
-    }), new ActivityFilterModel({
-        name: 'Dažasvydis',
-        type: 'type',
-        value: ActivityTypes.PAINT_BALL,
-        selected: false
-    }), new ActivityFilterModel({
-        name: 'Pabėgimo kambarys',
-        type: 'type',
-        value: ActivityTypes.ESCAPE_ROOM,
-        selected: false
-    }), new ActivityFilterModel({
-        name: 'Antakalnis',
-        type: 'place',
-        value: 'Antakalnis',
-        selected: false
-    }), new ActivityFilterModel({
-        name: 'Senamiestis',
-        type: 'place',
-        value: 'Senamiestis',
-        selected: false
-    }), new ActivityFilterModel({
-        name: 'Sauletekis',
-        type: 'place',
-        value: 'Sauletekis',
-        selected: false
-    }), new ActivityFilterModel({
-        name: '08:00 - 12:00',
-        type: 'time',
-        value: {from: 8 * 60, to: 12 * 60},
-        selected: false
-    }), new ActivityFilterModel({
-        name: '12:00 - 16:00',
-        type: 'time',
-        value: {from: 12 * 60, to: 16 * 60},
-        selected: false
-    }), new ActivityFilterModel({
-        name: '16:00 - 20:00',
-        type: 'time',
-        value: {from: 16 * 60, to: 20 * 60},
-        selected: false
-    }), new ActivityFilterModel({
-        name: '20:00 - 24:00',
-        type: 'time',
-        value: {from: 20 * 60, to: 24 * 60},
-        selected: false
-    })
-];
+const typeFiltersData = [new ActivityFilterModel({
+    name: 'Futbolas',
+    type: 'type',
+    value: ActivityTypes.FOOTBALL,
+    selected: false
+}), new ActivityFilterModel({
+    name: 'Tinklinis',
+    type: 'type',
+    value: ActivityTypes.VOLLEYBALL,
+    selected: false
+}), new ActivityFilterModel({
+    name: 'Šokiai',
+    type: 'type',
+    value: ActivityTypes.DANCES,
+    selected: false
+}), new ActivityFilterModel({
+    name: 'Dažasvydis',
+    type: 'type',
+    value: ActivityTypes.PAINT_BALL,
+    selected: false
+}), new ActivityFilterModel({
+    name: 'Pabėgimo kambarys',
+    type: 'type',
+    value: ActivityTypes.ESCAPE_ROOM,
+    selected: false
+})];
+
+const placeFiltersData = [new ActivityFilterModel({
+    name: 'Antakalnis',
+    type: 'place',
+    value: 'Antakalnis',
+    selected: false
+}), new ActivityFilterModel({
+    name: 'Senamiestis',
+    type: 'place',
+    value: 'Senamiestis',
+    selected: false
+}), new ActivityFilterModel({
+    name: 'Sauletekis',
+    type: 'place',
+    value: 'Sauletekis',
+    selected: false
+})];
+
+const timeFiltersData = [new ActivityFilterModel({
+    name: '08:00 - 12:00',
+    type: 'time',
+    value: {from: 8 * 60, to: 12 * 60},
+    selected: false
+}), new ActivityFilterModel({
+    name: '12:00 - 16:00',
+    type: 'time',
+    value: {from: 12 * 60, to: 16 * 60},
+    selected: false
+}), new ActivityFilterModel({
+    name: '16:00 - 20:00',
+    type: 'time',
+    value: {from: 16 * 60, to: 20 * 60},
+    selected: false
+}), new ActivityFilterModel({
+    name: '20:00 - 24:00',
+    type: 'time',
+    value: {from: 20 * 60, to: 24 * 60},
+    selected: false
+})];
+
+const activityFiltersData = [...typeFiltersData, ...placeFiltersData, ...timeFiltersData];
