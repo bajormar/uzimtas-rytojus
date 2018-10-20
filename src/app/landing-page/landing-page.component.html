@@ -1,5 +1,72 @@
+<mat-toolbar class="landing-page-menu" color="primary">
+    <a class="link-unstyled" [routerLink]="['']">Užimtas rytojus</a>
+    <div class="flex-fill"></div>
+</mat-toolbar>
+
 <div class="landing-section">
-    <img class="landing-image" src="https://images.unsplash.com/photo-1502904550040-7534597429ae?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5d9575e86751b65d41da8dfe6f09e23a&auto=format&fit=crop&w=1549&q=80">
+    <div class="section-cover">
+        <div style="position: relative;">
+            <img class="img img-fluid landing-image"
+                 style="object-fit: fill; width: 100%"
+                 [src]="backgroundImage">
+        </div>
+
+    </div>
+    <div class="section-cover filter"></div>
+    <div class="section-cover d-flex align-items-center">
+        <div style="max-height: 400px">
+            <form>
+                <mat-card class="ml-5" style="min-width: 400px">
+                    <mat-card-header>
+                        <mat-card-title>
+                            Surask veiklą
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div class="row">
+                            <mat-form-field class="col-sm-6 filter-field">
+                                <mat-select placeholder="Sporto šaka" multiple (selectionChange)="onFilterChange()">
+                                    <!--<mat-option *ngFor="let filter of typeFilters" [value]="filter.id">{{filter.name}}-->
+                                    <!--</mat-option>-->
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="col-sm-6 filter-field">
+                                <mat-select placeholder="Veiklos vieta" multiple (selectionChange)="onFilterChange()">
+                                    <!--<mat-option *ngFor="let filter of placeFilters" [value]="filter.id">{{filter.name}}-->
+                                    <!--</mat-option>-->
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="row">
+
+                            <mat-form-field class="col-sm-6 filter-field">
+                                <mat-select placeholder="Laikas" multiple (selectionChange)="onFilterChange()">
+                                    <!--<mat-option *ngFor="let filter of timeFilters" [value]="filter.id">{{filter.name}}-->
+                                    <!--</mat-option>-->
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="col-sm-6 filter-field">
+                                <mat-select placeholder="Lytis" multiple (selectionChange)="onFilterChange()">
+                                    <!--<mat-option *ngFor="let filter of genderFilters" [value]="filter.id">{{filter.name}}-->
+                                    <!--</mat-option>-->
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary">
+                            Ieškoti
+                        </button>
+                    </mat-card-actions>
+                </mat-card>
+            </form>
+
+        </div>
+
+    </div>
 </div>
 
 <ur-activity-filter-v2></ur-activity-filter-v2>
