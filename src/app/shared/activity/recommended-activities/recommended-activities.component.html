@@ -4,31 +4,20 @@
 
 <div class="row">
     <div class="col-sm-4 my-3" *ngFor="let activity of activities">
-        <mat-card class="h-100">
-            <img mat-card-image [src]="activity.imageSrc" alt="">
-            <div class="type-bar">{{activity.type}}</div>
-            <mat-card-content>
-                <div style="min-height: 40px">
-                    <div>
-                        <small class="text-muted">{{ activity.place }}</small>
-                    </div>
-                    <div>
-                        <a [routerLink]="['details', activity.id]">{{activity.name}}</a>
-                    </div>
+        <mat-card class="h-100 pb-2 pt-0">
+            <img mat-card-image class="my-0" [src]="activity.imageSrc" alt="">
+            <button mat-mini-fab class="star-button" color="primary"><mat-icon >star_border</mat-icon></button>
 
-                    <div class="d-flex align-items-center">
-                        <div class="d-flex font-weight-bold py-1">
-                            <div class="text-success pr-2">P</div>
-                            <div class="pr-2">A</div>
-                            <div class="pr-2">T</div>
-                            <div class="pr-2">K</div>
-                            <div class="pr-2">P</div>
-                            <div class="pr-2">Š</div>
-                            <div class="pr-2">S</div>
-                        </div>
-                        <span class="ml-auto font-weight-bold text-success">{{ activity.price }} €</span>
-                    </div>
+            <div class="type-bar">{{activity.type}}</div>
+            <mat-card-content class="pt-2">
+                <div>
+                    <small class="text-muted">{{ activity.place }}</small>
                 </div>
+                <div>
+                    <a [routerLink]="['details', activity.id]">{{activity.name}}</a>
+                </div>
+                <div *ngIf="activity.price" class="text-success">{{ activity.price }} € / mėn</div>
+                <div *ngIf="!activity.price" class="text-success">Nemokamai</div>
             </mat-card-content>
         </mat-card>
     </div>
