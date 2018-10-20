@@ -17,8 +17,8 @@ export class ActivityService {
         date: '2018/10/20',
         duration: '1h',
         place: 'Antakalnis',
-        positionLongitude: 25.279652,
-        positionLatitude: 54.687157,
+        positionLongitude: 25.245184555401494,
+        positionLatitude: 54.710794080190624
     }), new ActivityModel({
         name: 'Tinklinio akademija',
         imageSrc: 'https://g4.dcdn.lt/images/pix/delfi-tinklinio-turnyras-75293703.jpg',
@@ -28,8 +28,8 @@ export class ActivityService {
         date: '2018/10/30',
         duration: '2h',
         place: 'Senamiestis',
-        positionLongitude: 25.179652,
-        positionLatitude: 54.187157,
+        positionLongitude: 25.289228886661476,
+        positionLatitude: 54.71620389718555,
     }), new ActivityModel({
         name: 'Karibų šokių pamokos',
         imageSrc: 'http://www.satrijosklubas.lt/wp-content/uploads/Sokiai/Gatves-sokiai-vaikai-2.jpg',
@@ -39,8 +39,8 @@ export class ActivityService {
         date: '2018/10/21',
         duration: '1,5h',
         place: 'Sauletekis',
-        positionLongitude: 25.159652,
-        positionLatitude: 54.607157,
+        positionLongitude: 25.290101077401772,
+        positionLatitude: 54.69580304303838,
     })];
 
     private activitiesSubject = new BehaviorSubject<ActivityModel[]>(this.activities);

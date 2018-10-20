@@ -3,6 +3,7 @@ import {Component, ElementRef, OnInit, QueryList, ViewChildren} from '@angular/c
 import mapboxgl from 'mapbox-gl';
 import {ActivityService} from '../../shared/activity/activity.service';
 import {MapMarkerComponent} from '../map-marker/map-marker.component';
+import {MapService} from '../map.service';
 
 @Component({
     selector: 'ur-map',
@@ -18,47 +19,32 @@ export class MapComponent implements OnInit {
 
     public activities = [];
 
-    // Mapbox Markers list.
-    private mpMarkers = [];
-
     constructor(private elRef: ElementRef,
-                private activityService: ActivityService) {}
+                private activityService: ActivityService,
+                private mapService: MapService) {}
 
     ngOnInit() {
         mapboxgl.accessToken = mapboxAccessToken;
-        this.map = new mapboxgl.Map({
+        this.mapService.map = new mapboxgl.Map({
             container: 'map',
             center: [ 25.279652, 54.687157 ],
             zoom: 10,
             style: 'mapbox://styles/mapbox/streets-v9'
         });
 
+        this.mapService.map.on('mousedown', function (e) {
+            console.log(e);
+                // e.point is the x, y coordinates of the mousemove event relative
+                // to the top-left corner of the map
+                // JSON.stringify(e.point) + '<br />' +
+                // e.lngLat is the longitude, latitude geographical position of the event
+                // JSON.stringify(e.lngLat);
+        });
+
         this.activityService.activitiesObservable.subscribe((activities) => {
             this.activities = activities;
-            this.updateMarkers();
-        });
-
-        this.updateMarkers();
-    }
-
-    @ViewChildren(MapMarkerComponent) public set markers(marker: QueryList<MapMarkerComponent>) {
-        this.mpMarkers.forEach(mpMarker => {
-            mpMarker.remove();
-        });
-
-        this.mpMarkers = [];
-        marker.toArray().forEach((markerComponent) => {
-            console.dir(markerComponent.elementRef.nativeElement);
-            const activity = markerComponent.activity;
-            const mpMarker = new mapboxgl.Marker(markerComponent.elementRef.nativeElement.children[0])
-                .setLngLat([activity.positionLongitude, activity.positionLatitude])
-                .addTo(this.map);
-
-            this.mpMarkers.push(mpMarker);
         });
     }
-
-    private updateMarkers() {}
 }
 
 const mapboxAccessToken = `pk.eyJ1IjoiZ2VkZWd1bnoiLCJhIjoiY2lpamFzdHhwMDB6cnUxa3BycnZ5ZjhqYiJ9.IwxZG1LAZ0V1uPuDk_f7hQ`;
