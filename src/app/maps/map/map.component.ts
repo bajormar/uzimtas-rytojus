@@ -33,12 +33,15 @@ export class MapComponent implements OnInit {
             zoom: 11,
             style: 'mapbox://styles/mapbox/streets-v9'
         });
+        this.map = this.mapService.map;
 
         this.mapService.map.on('load', () => {
             this.initLayers();
 
             this.activityService.activitiesObservable.subscribe((activities) => {
+                this.activities = activities;
                 this.updateData(activities);
+                this.centerActivities(activities);
                 this.mapService.map.resize();
             });
         });
@@ -118,5 +121,21 @@ export class MapComponent implements OnInit {
         const activitiesSource = this.mapService.map.getSource('activities');
 
         activitiesSource.setData(this.mapService.getActivityData(activities));
+    }
+
+    private centerActivities(activities: ActivityModel[]) {
+        const bounds = new mapboxgl.LngLatBounds();
+
+        activities.forEach((activity) => {
+            bounds.extend([
+                activity.positionLongitude,
+                activity.positionLatitude,
+            ]);
+        });
+
+        this.map.fitBounds(bounds, {
+            padding: 100,
+            maxZoom: 15
+        });
     }
 }

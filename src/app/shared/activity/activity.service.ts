@@ -108,7 +108,7 @@ const activitiesData = [
     new ActivityModel({
         name: 'Sostinės krepšinio akademija',
         imageSrc: 'https://files.slack.com/files-pri/TDFFASP3Q-FDHSUKG64/final_zaid3.jpg',
-        type: ActivityTypes.PAINT_BALL,
+        type: ActivityTypes.BASKETBALL,
         description: 'Dažasvydis - tai yra greitas ir aktyvus žaidimas, kuriame žaidėjai arba komandos varžosi tarpusavyje kas eliminuos daugiau priešininkų, pažymint juos specialiais dažų kamuoliukais.',
         price: 0,
         date: new Date(2018, 9, 23, 19, 0, 0, 0),
@@ -233,32 +233,44 @@ const activitiesData = [
     })
 ];
 
-const typeFiltersData = [new ActivityFilterModel({
-    name: 'Futbolas',
-    type: 'type',
-    value: ActivityTypes.FOOTBALL,
-    selected: false
-}), new ActivityFilterModel({
-    name: 'Tinklinis',
-    type: 'type',
-    value: ActivityTypes.VOLLEYBALL,
-    selected: false
-}), new ActivityFilterModel({
-    name: 'Šokiai',
-    type: 'type',
-    value: ActivityTypes.DANCES,
-    selected: false
-}), new ActivityFilterModel({
-    name: 'Dažasvydis',
-    type: 'type',
-    value: ActivityTypes.PAINT_BALL,
-    selected: false
-}), new ActivityFilterModel({
-    name: 'Pabėgimo kambarys',
-    type: 'type',
-    value: ActivityTypes.ESCAPE_ROOM,
-    selected: false
-})];
+const typeFiltersData = [
+    new ActivityFilterModel({
+        name: 'Futbolas',
+        type: 'type',
+        value: ActivityTypes.FOOTBALL,
+        selected: false
+    }),
+    new ActivityFilterModel({
+        name: 'Krepšinis',
+        type: 'type',
+        value: ActivityTypes.BASKETBALL,
+        selected: false
+    }),
+    new ActivityFilterModel({
+        name: 'Tinklinis',
+        type: 'type',
+        value: ActivityTypes.VOLLEYBALL,
+        selected: false
+    }),
+    new ActivityFilterModel({
+        name: 'Šokiai',
+        type: 'type',
+        value: ActivityTypes.DANCES,
+        selected: false
+    }),
+    new ActivityFilterModel({
+        name: 'Dažasvydis',
+        type: 'type',
+        value: ActivityTypes.PAINT_BALL,
+        selected: false
+    }),
+    new ActivityFilterModel({
+        name: 'Pabėgimo kambarys',
+        type: 'type',
+        value: ActivityTypes.ESCAPE_ROOM,
+        selected: false
+    })
+];
 
 const placeFiltersData = [new ActivityFilterModel({
     name: 'Antakalnis',
