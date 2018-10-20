@@ -38,6 +38,7 @@ export class MapComponent implements OnInit {
 
             this.activityService.activitiesObservable.subscribe((activities) => {
                 this.updateData(activities);
+                this.mapService.map.resize();
             });
         });
     }
