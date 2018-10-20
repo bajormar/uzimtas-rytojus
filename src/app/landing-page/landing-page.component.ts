@@ -8,10 +8,6 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class LandingPageComponent implements OnInit {
 
-    public form = new FormGroup({
-        activityField: new FormControl()
-    });
-
     constructor() { }
 
     ngOnInit() {}

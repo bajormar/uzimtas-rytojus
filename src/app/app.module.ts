@@ -12,6 +12,7 @@ import {ActivityDetailsModule} from './activity-details/activity-details.module'
 import {RouterModule} from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ActivityModule} from './shared/activity/activity.module';
 
 @NgModule({
     imports: [
@@ -29,6 +30,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         MatToolbarModule,
         RouterModule,
 
+        ActivityModule,
         ReactiveFormsModule,
     ],
     declarations: [

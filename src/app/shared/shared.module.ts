@@ -7,7 +7,9 @@ import {ActivityModule} from './activity/activity.module';
         CommonModule,
         ActivityModule
     ],
-    declarations: []
+    declarations: [
+
+    ]
 })
 export class SharedModule {
 }
