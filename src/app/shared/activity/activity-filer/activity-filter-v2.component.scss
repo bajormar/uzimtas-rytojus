@@ -1,0 +1,12 @@
+.filter-container {
+    background-color: white;
+}
+
+.filter-form {
+    transition: all 0.3s ease-out;
+    min-height: 300px;
+
+    &.submitted {
+        min-height: 70px;
+    }
+}
