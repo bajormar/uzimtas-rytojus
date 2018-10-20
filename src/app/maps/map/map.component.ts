@@ -72,9 +72,9 @@ export class MapComponent implements OnInit {
                     "step",
                     ["get", "point_count"],
                     "#51bbd6",
-                    3,
-                    "#f1f075",
                     4,
+                    "#f1f075",
+                    6,
                     "#f28cb1"
                 ],
                 "circle-radius": [
@@ -114,6 +114,10 @@ export class MapComponent implements OnInit {
             }
         });
 
+        map.on('mousedown', (function (e) {
+            console.log(e);
+        });
+
         map.on('click', 'unclustered-point', (function (e) {
             const coordinates = e.features[0].geometry.coordinates.slice();
             const activityId = e.features[0].properties.id;
@@ -129,7 +133,7 @@ export class MapComponent implements OnInit {
 
             new mapboxgl.Popup()
                 .setLngLat(coordinates)
-                .setHTML(activity.description)
+                .setHTML(`<b>${ activity.name }</b>`)
                 .addTo(map);
         }).bind(this));
 

@@ -1,9 +1,11 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
 import {ActivityFilterV2Component} from './activity-filer/activity-filter-v2.component';
+import {RecommendedActivitiesComponent} from './recommended-activities/recommended-activities.component';
+import {MapsModule} from '../../maps/maps.module';
 
 @NgModule({
     imports: [
@@ -15,12 +17,17 @@ import {ActivityFilterV2Component} from './activity-filer/activity-filter-v2.com
         MatSelectModule,
         MatButtonModule,
         RouterModule,
+        MatCardModule,
+
+        MapsModule,
     ],
     declarations: [
-        ActivityFilterV2Component
+        ActivityFilterV2Component,
+        RecommendedActivitiesComponent
     ],
     exports: [
-        ActivityFilterV2Component
+        ActivityFilterV2Component,
+        RecommendedActivitiesComponent
     ]
 })
 export class ActivityModule { }
