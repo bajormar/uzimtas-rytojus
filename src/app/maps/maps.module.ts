@@ -4,6 +4,7 @@ import { MapComponent } from './map/map.component';
 import { MapLayoutComponent } from './map-layout/map-layout.component';
 import {RouterModule} from '@angular/router';
 import { MapMarkerComponent } from './map-marker/map-marker.component';
+import { MapStaticComponent } from './map-static/map-static.component';
 
 @NgModule({
     imports: [
@@ -13,10 +14,12 @@ import { MapMarkerComponent } from './map-marker/map-marker.component';
     declarations: [
         MapComponent,
         MapLayoutComponent,
-        MapMarkerComponent
+        MapMarkerComponent,
+        MapStaticComponent,
     ],
     exports: [
-        MapComponent
+        MapComponent,
+        MapStaticComponent,
     ]
 })
 export class MapsModule { }

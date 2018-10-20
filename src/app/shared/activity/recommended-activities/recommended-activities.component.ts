@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivityModel} from '../activity.model';
-import {ActivityService} from '../activity.service';
 
 @Component({
     selector: 'ur-recommended-activities',
@@ -9,14 +8,10 @@ import {ActivityService} from '../activity.service';
 })
 export class RecommendedActivitiesComponent implements OnInit {
 
-    public activities: ActivityModel[] = [];
+    @Input() activities: ActivityModel[];
 
-    constructor(private activityService: ActivityService) {}
+    constructor() {}
 
-    ngOnInit() {
-        this.activityService.activitiesObservable.subscribe((activities) => {
-            this.activities = [ ...activities ].splice(0, 6);
-        });
-    }
+    ngOnInit() {}
 
 }

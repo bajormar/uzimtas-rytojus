@@ -4,6 +4,7 @@ import mapboxgl from 'mapbox-gl';
 import {ActivityService} from '../../shared/activity/activity.service';
 import {MapService} from '../map.service';
 import {ActivityModel} from '../../shared/activity/activity.model';
+import {mapToken} from '../map-token';
 
 @Component({
     selector: 'ur-map',
@@ -25,7 +26,7 @@ export class MapComponent implements OnInit {
     }
 
     ngOnInit() {
-        mapboxgl.accessToken = mapboxAccessToken;
+        mapboxgl.accessToken = mapToken;
         this.mapService.map = new mapboxgl.Map({
             container: 'map',
             center: [25.279652, 54.687157],
@@ -46,48 +47,11 @@ export class MapComponent implements OnInit {
     public initLayers() {
         const activityService = this.activityService;
 
-        this.mapService.map.addSource('activities',
-            {
-                type: 'geojson',
-                cluster: true,
-                clusterMaxZoom: 14, // Max zoom to cluster points on
-                clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
-                data: this.getActivityData([])
-            });
+        this.mapService.map.addSource('activities', this.mapService.getGeoActivityClusterSource([]));
 
         const map = this.mapService.map;
 
-        map.addLayer({
-            id: "clusters",
-            type: "circle",
-            source: "activities",
-            filter: ["has", "point_count"],
-            paint: {
-                // Use step expressions (https://www.mapbox.com/mapbox-gl-js/style-spec/#expressions-step)
-                // with three steps to implement three types of circles:
-                //   * Blue, 20px circles when point count is less than 100
-                //   * Yellow, 30px circles when point count is between 100 and 750
-                //   * Pink, 40px circles when point count is greater than or equal to 750
-                "circle-color": [
-                    "step",
-                    ["get", "point_count"],
-                    "#51bbd6",
-                    4,
-                    "#f1f075",
-                    6,
-                    "#f28cb1"
-                ],
-                "circle-radius": [
-                    "step",
-                    ["get", "point_count"],
-                    20,
-                    100,
-                    30,
-                    750,
-                    40
-                ]
-            }
-        });
+        map.addLayer(this.mapService.createActivityLayer());
 
         map.addLayer({
             id: "cluster-count",
@@ -101,18 +65,7 @@ export class MapComponent implements OnInit {
             }
         });
 
-        map.addLayer({
-            id: "unclustered-point",
-            type: "circle",
-            source: "activities",
-            filter: ["!", ["has", "point_count"]],
-            paint: {
-                "circle-color": "#11b4da",
-                "circle-radius": 10,
-                "circle-stroke-width": 1,
-                "circle-stroke-color": "#fff"
-            }
-        });
+        map.addLayer(this.mapService.getGeoActivityDisplayLayerSettings());
 
         map.on('mousedown', (function (e) {
             console.log(e);
@@ -164,29 +117,6 @@ export class MapComponent implements OnInit {
     private updateData(activities: ActivityModel[]) {
         const activitiesSource = this.mapService.map.getSource('activities');
 
-        activitiesSource.setData(this.getActivityData(activities));
-    }
-
-    private getActivityData(activities: ActivityModel[]) {
-        return {
-            type: 'FeatureCollection',
-            features: activities.map((activity: ActivityModel) => {
-                return {
-                    type: 'Feature',
-                    properties: {
-                        id: activity.id
-                    },
-                    geometry: {
-                        type: 'Point',
-                        coordinates: [
-                            activity.positionLongitude,
-                            activity.positionLatitude
-                        ]
-                    }
-                };
-            })
-        };
+        activitiesSource.setData(this.mapService.getActivityData(activities));
     }
 }
-
-const mapboxAccessToken = `pk.eyJ1IjoiZ2VkZWd1bnoiLCJhIjoiY2lpamFzdHhwMDB6cnUxa3BycnZ5ZjhqYiJ9.IwxZG1LAZ0V1uPuDk_f7hQ`;
