@@ -23,16 +23,16 @@ export class LandingPageComponent implements OnInit {
         this.backgroundImage = backgroundImages[this.getRndInteger(0, 6)];
 
         this.activityService.activitiesObservable.subscribe((activities) => {
-            this.activities = [...activities].splice(0, 6);
+            this.activities = activities;
         });
     }
 
     public getRndInteger(min, max) {
-        return Math.floor(Math.random() * (max - min) ) + min;
+        return Math.floor(Math.random() * (max - min)) + min;
     }
 }
 
-let backgroundImages = [
+const backgroundImages = [
     'https://images.unsplash.com/photo-1502904550040-7534597429ae?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5d9575e86751b65d41da8dfe6f09e23a&auto=format&fit=crop&w=1549&q=80',
     'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=41900ca14b1acd536efbaf79f09e2632&auto=format&fit=crop&w=750&q=80',
     'https://images.unsplash.com/photo-1509255929945-586a420363cf?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1837886ce541e402e3945f937c3afe08&auto=format&fit=crop&w=1501&q=80',

@@ -1,7 +1,7 @@
 <h4 class="text-muted">Jums gali patikti</h4>
 
 <div class="row">
-    <div class="col-sm-4 my-3" *ngFor="let activity of activities">
+    <div class="col-sm-4 my-3" *ngFor="let activity of shownActivities">
         <mat-card class="h-100 pb-2 pt-0">
             <img mat-card-image class="my-0" [src]="activity.imageSrc" alt="">
             <button mat-mini-fab class="star-button" color="primary" (click)="changeStarState(activity.id)">
