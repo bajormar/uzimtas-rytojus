@@ -10,6 +10,7 @@ import {MapsModule} from './maps/maps.module';
 import {SharedModule} from './shared/shared.module';
 import {ActivityDetailsModule} from './activity-details/activity-details.module';
 import {RouterModule} from '@angular/router';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import {RouterModule} from '@angular/router';
         RouterModule,
     ],
     declarations: [
-        AppComponent
+        AppComponent,
+        LandingPageComponent
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -4,10 +4,15 @@ import {HomePageComponent} from './home-page/home-page.component';
 import {MapLayoutComponent} from './maps/map-layout/map-layout.component';
 import {MapComponent} from './maps/map/map.component';
 import {ActivityDetailsComponent} from './activity-details/activity-details.component';
+import {LandingPageComponent} from './landing-page/landing-page.component';
 
 const routes: Routes = [
     {
         path: '',
+        component: LandingPageComponent
+    },
+    {
+        path: 'results',
         component: HomePageComponent
     },
     {
