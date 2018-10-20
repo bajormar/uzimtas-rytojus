@@ -1,3 +1,6 @@
 <div class="container-fluid">
-    <ur-activity-item *ngFor="let activity of activities" [activity]="activity"></ur-activity-item>
+    <ur-activity-item *ngFor="let activity of activities"
+                      [activity]="activity"
+                      [user]="user"
+                      (starClick)="changeStarState($event)"></ur-activity-item>
 </div>

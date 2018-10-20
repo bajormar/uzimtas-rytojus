@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ActivityItemComponent} from './activity-item.component';
-import {MatCardModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatIconModule} from '@angular/material';
 import {TruncateModule} from '@yellowspot/ng-truncate';
 import {RouterModule} from '@angular/router';
 
@@ -11,6 +11,8 @@ import {RouterModule} from '@angular/router';
         MatCardModule,
         TruncateModule,
         RouterModule,
+        MatIconModule,
+        MatButtonModule,
     ],
     declarations: [ActivityItemComponent],
     exports: [ActivityItemComponent]
