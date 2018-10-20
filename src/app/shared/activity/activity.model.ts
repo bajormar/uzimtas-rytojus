@@ -11,6 +11,12 @@ export class ActivityModel {
     date: Date;
     place: string;
 
+    contactDetails: {
+      name: string;
+      image: string;
+      phone: string;
+    };
+
     positionLongitude: number; // Kaire desine
     positionLatitude: number; // Virsus apacia
 
