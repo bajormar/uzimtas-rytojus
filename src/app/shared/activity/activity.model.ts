@@ -1,6 +1,7 @@
 import {ActivityTypes} from './activity-types.enum';
 
 export class ActivityModel {
+    id: number;
     name: string;
     type: ActivityTypes;
     imageSrc: string;

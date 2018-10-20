@@ -45,6 +45,7 @@ export class ActivityService {
 
 const activities = [
     new ActivityModel({
+        id: 1,
         name: 'Vilniaus futbolo mokykla "ŽAIBAS"',
         imageSrc: 'https://cdn.images.express.co.uk/img/dynamic/67/590x/Heung-min-Son-925466.jpg',
         type: ActivityTypes.FOOTBALL,
@@ -57,6 +58,7 @@ const activities = [
         positionLatitude: 54.710794080190624
     }),
     new ActivityModel({
+        id: 2,
         name: 'Tinklinio akademija',
         imageSrc: 'https://g4.dcdn.lt/images/pix/delfi-tinklinio-turnyras-75293703.jpg',
         type: ActivityTypes.VOLLEYBALL,
@@ -69,6 +71,7 @@ const activities = [
         positionLatitude: 54.71620389718555,
     }),
     new ActivityModel({
+        id: 3,
         name: 'Karibų šokių pamokos',
         imageSrc: 'http://www.satrijosklubas.lt/wp-content/uploads/Sokiai/Gatves-sokiai-vaikai-2.jpg',
         type: ActivityTypes.DANCES,

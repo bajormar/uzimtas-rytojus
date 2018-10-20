@@ -1,17 +1,15 @@
-<div class="d-flex flex-column h-100">
-    <mat-toolbar color="primary">
-        <span>Užimtas rytojus</span>
-    </mat-toolbar>
-
-    <div class="d-flex flex-fill">
-        <div class="filter d-flex justify-content-center p-2">
-            <ur-activity-filter></ur-activity-filter>
+<div class="container-fluid  h-100">
+    <div class="row  h-100">
+        <div class="col-sm-auto">
+            <div class="filter d-flex justify-content-center pt-2">
+                <ur-activity-filter></ur-activity-filter>
+            </div>
         </div>
-        <div class="activities flex-fill p-2">
+        <div class="col-sm">
             <ur-activity-list></ur-activity-list>
         </div>
-        <div class="map flex-fill">
-            <ur-map></ur-map>
+        <div class="col-sm pr-0">
+            <ur-map class="map"></ur-map>
         </div>
     </div>
 </div>
