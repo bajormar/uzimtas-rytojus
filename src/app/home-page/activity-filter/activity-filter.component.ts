@@ -38,6 +38,8 @@ export class ActivityFilterComponent implements OnInit {
         })],
     };
 
+    timeFrom = 0;
+    timeTo = 1440;
 
     constructor(private activityService: ActivityService) {
     }
@@ -50,6 +52,14 @@ export class ActivityFilterComponent implements OnInit {
         const selectedPlaces = this.filters.place.filter(f => f.selected);
         const types = (selectedTypes.length > 0 ? selectedTypes : this.filters.type).map(f => f.filterValue);
         const places = (selectedPlaces.length > 0 ? selectedPlaces : this.filters.place).map(f => f.filterValue);
-        this.activityService.filter(types, places);
+        const timeFrom = this.timeFrom;
+        const timeTo = this.timeTo;
+        this.activityService.filter(types, places, timeFrom, timeTo);
+    }
+
+    formatTime(time: number) {
+        const hours = Math.floor(time / 60);
+        const minutes = time % 60;
+        return `${hours > 9 ? hours : '0' + hours}:${minutes > 9 ? minutes : '0' + minutes}`;
     }
 }

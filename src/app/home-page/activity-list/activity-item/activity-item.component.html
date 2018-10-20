@@ -9,7 +9,7 @@
             <div class="col-sm-8">
                 <div class="p-2">
                     <h5>{{activity.name}}</h5>
-                    <div>{{activity.place}} - {{activity.date}} - {{activity.duration}}</div>
+                    <div>{{activity.place}} - {{activity.date | date: 'M d, HH:mm'}} - {{activity.duration}}</div>
                     <small class="text-muted font-xs">{{activity.description | truncate : 150 : "…"}}</small>
                     <h5 class="text-right font-weight-bold text-success">{{activity.price}} €</h5>
                 </div>

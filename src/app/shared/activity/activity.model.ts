@@ -7,7 +7,7 @@ export class ActivityModel {
     description: string;
     price: number;
     duration: string;
-    date: string;
+    date: Date;
     place: string;
 
     positionLongitude: number; // Kaire desine
