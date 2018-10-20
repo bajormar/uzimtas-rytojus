@@ -10,11 +10,12 @@
             </div>
             <div class="col-sm-8">
                 <div class="p-2">
-                    <h6><a [routerLink]="['details', activity.id]">{{activity.name}}</a></h6>
+                    <div>{{activity.type}}</div>
+                    <h6><a [routerLink]="['/details', activity.id]">{{activity.name}}</a></h6>
                     <div>{{activity.place}} - {{activity.date | date: 'M d, HH:mm'}} - {{activity.duration}}</div>
-                    <small class="text-muted font-xs">{{activity.description | truncate : 150 : "…"}}</small>
-                    <h5 *ngIf="activity.price" class="text-success">{{activity.price}} €</h5>
-                    <h5 *ngIf="!activity.price" class="text-success">Nemokamai</h5>
+                    <small class="text-muted font-xs py-2">{{activity.description | truncate : 150 : "…"}}</small>
+                    <div *ngIf="activity.price" class="text-success">{{activity.price}} € / mėn</div>
+                    <div *ngIf="!activity.price" class="text-success">Nemokamai</div>
                 </div>
             </div>
         </div>
