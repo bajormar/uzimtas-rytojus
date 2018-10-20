@@ -23,7 +23,7 @@ export class MapMarkerComponent implements OnInit, AfterContentInit, OnDestroy {
     public ngAfterContentInit(): void {
         this.marker = new mapboxgl.Marker(this.markerElement)
             .setLngLat([this.activity.positionLongitude, this.activity.positionLatitude])
-            .addTo(this.mapService.map);
+            // .addTo(this.mapService.map);
     }
 
     ngOnDestroy(): void {

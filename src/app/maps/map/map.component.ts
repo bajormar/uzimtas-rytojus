@@ -1,9 +1,9 @@
-import {Component, ElementRef, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 
 import mapboxgl from 'mapbox-gl';
 import {ActivityService} from '../../shared/activity/activity.service';
-import {MapMarkerComponent} from '../map-marker/map-marker.component';
 import {MapService} from '../map.service';
+import {ActivityModel} from '../../shared/activity/activity.model';
 
 @Component({
     selector: 'ur-map',
@@ -21,29 +21,148 @@ export class MapComponent implements OnInit {
 
     constructor(private elRef: ElementRef,
                 private activityService: ActivityService,
-                private mapService: MapService) {}
+                private mapService: MapService) {
+    }
 
     ngOnInit() {
         mapboxgl.accessToken = mapboxAccessToken;
         this.mapService.map = new mapboxgl.Map({
             container: 'map',
-            center: [ 25.279652, 54.687157 ],
-            zoom: 10,
+            center: [25.279652, 54.687157],
+            zoom: 11,
             style: 'mapbox://styles/mapbox/streets-v9'
         });
 
+        if (1 === 1) {
+            // return;
+        }
+
+
         this.mapService.map.on('mousedown', function (e) {
             console.log(e);
-                // e.point is the x, y coordinates of the mousemove event relative
-                // to the top-left corner of the map
-                // JSON.stringify(e.point) + '<br />' +
-                // e.lngLat is the longitude, latitude geographical position of the event
-                // JSON.stringify(e.lngLat);
+            // e.point is the x, y coordinates of the mousemove event relative
+            // to the top-left corner of the map
+            // JSON.stringify(e.point) + '<br />' +
+            // e.lngLat is the longitude, latitude geographical position of the event
+            // JSON.stringify(e.lngLat);
         });
+
+        this.mapService.map.on('load', () => {
+            this.test();
+        });
+
 
         this.activityService.activitiesObservable.subscribe((activities) => {
             this.activities = activities;
         });
+    }
+
+    public test() {
+        this.mapService.map.addSource('activities', {
+            type: 'geojson',
+            cluster: true,
+            clusterMaxZoom: 14, // Max zoom to cluster points on
+            clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
+
+            data: {
+                type: 'FeatureCollection',
+                features: this.activities.map((activity: ActivityModel) => {
+                    return {
+                        type: 'Feature',
+                        properties: {},
+                        geometry: {
+                            type: 'Point',
+                            coordinates: [
+                                activity.positionLongitude,
+                                activity.positionLatitude
+                            ]
+                        }
+                    };
+                })
+            }
+        });
+
+        const map = this.mapService.map;
+
+        map.addLayer({
+            id: "clusters",
+            type: "circle",
+            source: "activities",
+            filter: ["has", "point_count"],
+            paint: {
+                // Use step expressions (https://www.mapbox.com/mapbox-gl-js/style-spec/#expressions-step)
+                // with three steps to implement three types of circles:
+                //   * Blue, 20px circles when point count is less than 100
+                //   * Yellow, 30px circles when point count is between 100 and 750
+                //   * Pink, 40px circles when point count is greater than or equal to 750
+                "circle-color": [
+                    "step",
+                    ["get", "point_count"],
+                    "#51bbd6",
+                    100,
+                    "#f1f075",
+                    750,
+                    "#f28cb1"
+                ],
+                "circle-radius": [
+                    "step",
+                    ["get", "point_count"],
+                    20,
+                    100,
+                    30,
+                    750,
+                    40
+                ]
+            }
+        });
+
+        map.addLayer({
+            id: "cluster-count",
+            type: "symbol",
+            source: "activities",
+            filter: ["has", "point_count"],
+            layout: {
+                "text-field": "{point_count_abbreviated}",
+                "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
+                "text-size": 12
+            }
+        });
+
+        map.addLayer({
+            id: "unclustered-point",
+            type: "circle",
+            source: "activities",
+            filter: ["!", ["has", "point_count"]],
+            paint: {
+                "circle-color": "#11b4da",
+                "circle-radius": 10,
+                "circle-stroke-width": 1,
+                "circle-stroke-color": "#fff"
+            }
+        });
+
+        map.on('click', 'clusters', function (e) {
+            var features = map.queryRenderedFeatures(e.point, { layers: ['clusters'] });
+            var clusterId = features[0].properties.cluster_id;
+            map.getSource('activities').getClusterExpansionZoom(clusterId, function (err, zoom) {
+                if (err)
+                    return;
+
+                map.easeTo({
+                    center: features[0].geometry.coordinates,
+                    zoom: zoom
+                });
+            });
+        });
+
+        map.on('mouseenter', 'clusters', function () {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+
+        map.on('mouseleave', 'clusters', function () {
+            map.getCanvas().style.cursor = '';
+        });
+
     }
 }
 
