@@ -11,7 +11,7 @@ import {ActivityFilterModel} from '../activity-filter.model';
 })
 export class ActivityFilterV2Component implements OnInit {
 
-    public submitted = false;
+    public resultsPage = false;
 
     public form = new FormGroup({
         types: new FormControl([]),
@@ -29,6 +29,8 @@ export class ActivityFilterV2Component implements OnInit {
     }
 
     ngOnInit() {
+        this.resultsPage = this.router.url === '/results';
+
         this.activityService.filtersObservable.subscribe(filters => {
             this.typeFilters = filters.filter(f => f.type === 'type');
             this.placeFilters = filters.filter(f => f.type === 'place');
@@ -43,8 +45,27 @@ export class ActivityFilterV2Component implements OnInit {
     }
 
     public onSubmit() {
-        this.submitted = true;
+        const activeFiltersIds = [
+            ...this.form.get('types').value,
+            ...this.form.get('places').value,
+            ...this.form.get('times').value,
+            ...this.form.get('genders').value
+        ];
+
         this.activityService.clearFilters();
+
+        activeFiltersIds.forEach(filterId => {
+            this.activityService.updateFilter(filterId, true);
+        });
+
+        this.activityService.filterActivities();
+        this.router.navigateByUrl('/results');
+    }
+
+    public onFilterChange() {
+        if (!this.resultsPage) {
+            return;
+        }
 
         const activeFiltersIds = [
             ...this.form.get('types').value,
@@ -56,9 +77,7 @@ export class ActivityFilterV2Component implements OnInit {
         activeFiltersIds.forEach(filterId => {
             this.activityService.updateFilter(filterId, true);
         });
-
         this.activityService.filterActivities();
-        this.router.navigateByUrl('/results');
     }
 
 }
