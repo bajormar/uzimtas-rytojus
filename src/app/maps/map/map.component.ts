@@ -33,18 +33,8 @@ export class MapComponent implements OnInit {
             style: 'mapbox://styles/mapbox/streets-v9'
         });
 
-        if (1 === 1) {
-            // return;
-        }
-
-
         this.mapService.map.on('mousedown', function (e) {
             console.log(e);
-            // e.point is the x, y coordinates of the mousemove event relative
-            // to the top-left corner of the map
-            // JSON.stringify(e.point) + '<br />' +
-            // e.lngLat is the longitude, latitude geographical position of the event
-            // JSON.stringify(e.lngLat);
         });
 
         this.mapService.map.on('load', () => {
@@ -69,7 +59,9 @@ export class MapComponent implements OnInit {
                 features: this.activities.map((activity: ActivityModel) => {
                     return {
                         type: 'Feature',
-                        properties: {},
+                        properties: {
+                            id: activity.id
+                        },
                         geometry: {
                             type: 'Point',
                             coordinates: [
@@ -99,9 +91,9 @@ export class MapComponent implements OnInit {
                     "step",
                     ["get", "point_count"],
                     "#51bbd6",
-                    100,
+                    3,
                     "#f1f075",
-                    750,
+                    4,
                     "#f28cb1"
                 ],
                 "circle-radius": [
@@ -139,6 +131,25 @@ export class MapComponent implements OnInit {
                 "circle-stroke-width": 1,
                 "circle-stroke-color": "#fff"
             }
+        });
+
+        map.on('click', 'unclustered-point', function (e) {
+            const coordinates = e.features[0].geometry.coordinates.slice();
+            const activity = e.features[0].properties.activity;
+
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+
+            console.log( activity);
+
+            new mapboxgl.Popup()
+                .setLngLat(coordinates)
+                .setHTML(activity.description)
+                .addTo(map);
         });
 
         map.on('click', 'clusters', function (e) {
