@@ -21,8 +21,10 @@ export class MapMarkerComponent implements OnInit, AfterContentInit, OnDestroy {
     public ngOnInit() {}
 
     public ngAfterContentInit(): void {
-        this.marker = new mapboxgl.Marker(this.markerElement)
+        this.marker = new mapboxgl
+            .Marker()
             .setLngLat([this.activity.positionLongitude, this.activity.positionLatitude])
+            // .addTo(this.mapService.map.getLayer('unclustered-point'));
     }
 
     ngOnDestroy(): void {

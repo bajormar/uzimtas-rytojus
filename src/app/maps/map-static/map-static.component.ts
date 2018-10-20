@@ -26,12 +26,6 @@ export class MapStaticComponent implements OnInit {
             zoom: 11,
             style: 'mapbox://styles/mapbox/streets-v9'
         });
-        //
-        // map.addControl(new mapboxgl.NavigationControl({
-        //     zoomIn: true,
-        //     zoomOut: true,
-        //     compass: false
-        // }));
 
         // Add zoom and rotation controls to the map.
         map.addControl(new mapboxgl.NavigationControl({
@@ -49,10 +43,10 @@ export class MapStaticComponent implements OnInit {
                 type: 'circle',
                 source: 'activities',
                 paint: {
-                    'circle-color': '#da0e25',
+                    'circle-color': '#3f51b5',
                     'circle-radius': 10,
                     'circle-stroke-width': 1,
-                    'circle-stroke-color': '#fff'
+                    'circle-stroke-color': '#3a4ba5'
                 }
             });
 
