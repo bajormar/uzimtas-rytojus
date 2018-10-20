@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ActivityModel} from '../../../shared/activity/activity.model';
 
 @Component({
@@ -9,6 +9,7 @@ import {ActivityModel} from '../../../shared/activity/activity.model';
 export class ActivityItemComponent implements OnInit {
 
     @Input() activity: ActivityModel;
+    @Output() activityNameClicked = new EventEmitter();
 
     constructor() {
     }

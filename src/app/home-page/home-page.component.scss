@@ -1,13 +1,13 @@
-:host {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    //min-width: 100vw;
-    //min-height: 100vh;
-    //display: block;
-}
+//:host {
+//    position: absolute;
+//    left: 0;
+//    right: 0;
+//    top: 0;
+//    bottom: 0;
+//    //min-width: 100vw;
+//    //min-height: 100vh;
+//    //display: block;
+//}
 
 .filter {
     max-width: 200px;
@@ -17,6 +17,7 @@
 .map {
     overflow: hidden;
     display: block;
-    min-width: 50%;
+    min-width: 80%;
+    width: 300px;
     border-left: 1px solid #dee2e6 !important
 }

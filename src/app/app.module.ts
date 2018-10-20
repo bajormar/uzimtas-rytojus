@@ -4,10 +4,12 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material';
+import {MatButtonModule, MatToolbarModule} from '@angular/material';
 import {HomePageModule} from './home-page/home-page.module';
 import {MapsModule} from './maps/maps.module';
 import {SharedModule} from './shared/shared.module';
+import {ActivityDetailsModule} from './activity-details/activity-details.module';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
     imports: [
@@ -18,6 +20,9 @@ import {SharedModule} from './shared/shared.module';
         HomePageModule,
         MapsModule,
         SharedModule,
+        ActivityDetailsModule,
+        MatToolbarModule,
+        RouterModule,
     ],
     declarations: [
         AppComponent
