@@ -109,7 +109,7 @@ const activities = [
         id: 4,
         name: 'Dažasvydis',
         imageSrc: 'https://legionas.lt/wp-content/uploads/2016/02/522546_10150663069913751_1032937692_n.jpg',
-        type: ActivityTypes.PAINTBALL,
+        type: ActivityTypes.PAINT_BALL,
         description: 'Dažasvydis - tai yra greitas ir aktyvus žaidimas, kuriame žaidėjai arba komandos varžosi tarpusavyje kas eliminuos daugiau priešininkų, pažymint juos specialiais dažų kamuoliukais, kurie iššaunami iš dažasvydžio markerio (šautuvo).',
         price: 0,
         date: new Date(2018, 9, 23, 19, 0, 0, 0),
