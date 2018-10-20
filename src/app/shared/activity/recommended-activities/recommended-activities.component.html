@@ -3,28 +3,28 @@
 </h2>
 
 <div class="row">
-    <div class="col-sm-4 mt-4" *ngFor="let activity of activities">
-        <mat-card>
-            <img mat-card-image [src]="activity.imageSrc" alt="Photo of a Shiba Inu">
+    <div class="col-sm-4 my-3" *ngFor="let activity of activities">
+        <mat-card class="h-100">
+            <img mat-card-image [src]="activity.imageSrc" alt="">
+            <div class="type-bar">{{activity.type}}</div>
             <mat-card-content>
                 <div style="min-height: 40px">
-                    <div class="d-flex">
-                        <b style="text-transform: uppercase">{{ activity.name }}</b>
-                        <span class="flex-fill"></span>
+                    <h6 class="text-uppercase">
+                        <a [routerLink]="['details', activity.id]">{{activity.name}}</a>
+                    </h6>
+
+                    <div class="d-flex font-weight-bold">
+                        <div class="text-success pr-2">P</div>
+                        <div class="pr-2">A</div>
+                        <div class="pr-2">T</div>
+                        <div class="pr-2">K</div>
+                        <div class="pr-2">P</div>
+                        <div class="pr-2">Š</div>
+                        <div class="pr-2">S</div>
                     </div>
-                    <div class="d-flex justify-content-between pt-2 available-days">
-                        <div class="available">P</div>
-                        <div>A</div>
-                        <div>T</div>
-                        <div>K</div>
-                        <div>P</div>
-                        <div>Š</div>
-                        <div>S</div>
-                    </div>
                     <div class="d-flex">
-                        <b style="text-transform: uppercase">{{ activity.place }}</b>
-                        <span class="flex-fill"></span>
-                        <b style="text-transform: uppercase">{{ activity.price }} Eur</b>
+                        <small class="text-muted font-weight-bold">{{ activity.place }}</small>
+                        <span class="ml-auto font-weight-bold text-success">{{ activity.price }} Eur</span>
                     </div>
                 </div>
             </mat-card-content>
