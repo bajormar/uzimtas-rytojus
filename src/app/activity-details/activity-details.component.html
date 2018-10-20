@@ -1,3 +1,45 @@
-<p>
-  activity-details works!
-</p>
+<div class="container">
+    <mat-card class="mt-4">
+        <mat-card-content>
+            <div class="row">
+                <div class="col-sm-auto">
+                    <img style="max-width: 400px; height: 200px" [src]="activity.imageSrc">
+                </div>
+                <div class="col-sm">
+                    <h3>{{activity.name}}</h3>
+                    <small class="text-muted">{{activity.description}}</small>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <div class="row">
+        <div class="col-sm">
+            <mat-card class="mt-4">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-sm-auto">
+                            <div class="contact-image-container">
+                                <img class="img img-fluid contact-image" [src]="activity.contactDetails.image">
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <h4>{{activity.contactDetails.name}}</h4>
+                            <small class="text-muted">Tel. {{activity.contactDetails.phone}}</small>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-sm">
+            <mat-card class="mt-4">
+                <mat-card-content>
+                    <div class="map">
+                        <ur-map></ur-map>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+

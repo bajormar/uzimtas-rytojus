@@ -59,7 +59,12 @@ const activities = [
         duration: '1h',
         place: 'Antakalnis',
         positionLongitude: 25.245184555401494,
-        positionLatitude: 54.710794080190624
+        positionLatitude: 54.710794080190624,
+        contactDetails: {
+            name: 'Vardenis Pavardenis',
+            image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
+            phone: '+370 123 12345',
+        },
     }),
     new ActivityModel({
         id: 2,
@@ -73,6 +78,11 @@ const activities = [
         place: 'Senamiestis',
         positionLongitude: 25.289228886661476,
         positionLatitude: 54.71620389718555,
+        contactDetails: {
+            name: 'Vardenis Pavardenis',
+            image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
+            phone: '+370 123 12345',
+        },
     }),
     new ActivityModel({
         id: 3,
@@ -86,6 +96,11 @@ const activities = [
         place: 'Sauletekis',
         positionLongitude: 25.290101077401772,
         positionLatitude: 54.69580304303838,
+        contactDetails: {
+            name: 'Vardenis Pavardenis',
+            image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
+            phone: '+370 123 12345',
+        },
     }),
     new ActivityModel({
         id: 4,
@@ -99,6 +114,11 @@ const activities = [
         place: 'Sauletekis',
         positionLongitude: 25.27398647019848,
         positionLatitude: 54.71189442459348,
+        contactDetails: {
+            name: 'Vardenis Pavardenis',
+            image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
+            phone: '+370 123 12345',
+        },
     }),
     new ActivityModel({
         id: 5,
@@ -112,6 +132,11 @@ const activities = [
         place: 'Sauletekis',
         positionLongitude: 25.273415407973545,
         positionLatitude: 54.705213007921884,
+        contactDetails: {
+            name: 'Vardenis Pavardenis',
+            image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
+            phone: '+370 123 12345',
+        },
     }),
     new ActivityModel({
         id: 6,
@@ -125,5 +150,10 @@ const activities = [
         place: 'Sauletekis',
         positionLongitude: 25.24709701540803,
         positionLatitude: 54.70899092953229,
+        contactDetails: {
+            name: 'Vardenis Pavardenis',
+            image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
+            phone: '+370 123 12345',
+        },
     })
 ];
