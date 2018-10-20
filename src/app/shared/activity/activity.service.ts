@@ -41,6 +41,10 @@ export class ActivityService {
         });
         this.activitiesSubject.next(activities);
     }
+
+    getActivity(activityId: number): ActivityModel {
+        return this.activities.find(a => a.id === activityId);
+    }
 }
 
 const activities = [
@@ -84,6 +88,7 @@ const activities = [
         positionLatitude: 54.69580304303838,
     }),
     new ActivityModel({
+        id: 4,
         name: 'Dažasvydis',
         imageSrc: 'https://legionas.lt/wp-content/uploads/2016/02/522546_10150663069913751_1032937692_n.jpg',
         type: ActivityTypes.PAINTBALL,
@@ -96,6 +101,7 @@ const activities = [
         positionLatitude: 54.71189442459348,
     }),
     new ActivityModel({
+        id: 5,
         name: 'Pabėgimo kambarys - galvosūkiai',
         imageSrc: 'https://www.visainfo.lt/media/k2/items/cache/cf8018b7fa2fcee05057522dc61f4a72_L.jpg',
         type: ActivityTypes.ESCAPE_ROOM,
@@ -108,6 +114,7 @@ const activities = [
         positionLatitude: 54.705213007921884,
     }),
     new ActivityModel({
+        id: 6,
         name: 'Pabėgimo kambarys - galvosūkiai',
         imageSrc: 'https://www.laisvalaikiodovanos.lt/public/photos/products/09/22/25/64566_photo_r.jpg?version=1506675112',
         type: ActivityTypes.ESCAPE_ROOM,

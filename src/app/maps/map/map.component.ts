@@ -33,14 +33,11 @@ export class MapComponent implements OnInit {
             style: 'mapbox://styles/mapbox/streets-v9'
         });
 
-        this.mapService.map.on('mousedown', function (e) {
-            console.log(e);
-        });
+        // this.mapService.map.on('mousedown', function (e) {
+        //     console.log(e);
+        // });
 
-        this.mapService.map.on('load', () => {
-            this.test();
-        });
-
+        this.mapService.map.on('load', () => (() => this.test()).bind(this));
 
         this.activityService.activitiesObservable.subscribe((activities) => {
             this.activities = activities;
@@ -48,6 +45,8 @@ export class MapComponent implements OnInit {
     }
 
     public test() {
+        const activityService = this.activityService;
+
         this.mapService.map.addSource('activities', {
             type: 'geojson',
             cluster: true,
@@ -133,9 +132,11 @@ export class MapComponent implements OnInit {
             }
         });
 
-        map.on('click', 'unclustered-point', function (e) {
+        map.on('click', 'unclustered-point', (function (e) {
             const coordinates = e.features[0].geometry.coordinates.slice();
-            const activity = e.features[0].properties.activity;
+            const activityId = e.features[0].properties.id;
+
+            const activity = activityService.getActivity(activityId);
 
             // Ensure that if the map is zoomed out such that multiple
             // copies of the feature are visible, the popup appears
@@ -144,13 +145,11 @@ export class MapComponent implements OnInit {
                 coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
             }
 
-            console.log( activity);
-
             new mapboxgl.Popup()
                 .setLngLat(coordinates)
                 .setHTML(activity.description)
                 .addTo(map);
-        });
+        }).bind(this));
 
         map.on('click', 'clusters', function (e) {
             var features = map.queryRenderedFeatures(e.point, { layers: ['clusters'] });
