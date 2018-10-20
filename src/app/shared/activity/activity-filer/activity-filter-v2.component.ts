@@ -17,7 +17,8 @@ export class ActivityFilterV2Component implements OnInit {
         types: new FormControl([]),
         places: new FormControl([]),
         times: new FormControl([]),
-        genders: new FormControl([])
+        genders: new FormControl([]),
+        showMap: new FormControl(null)
     });
 
     typeFilters: ActivityFilterModel[] = [];
