@@ -15,7 +15,7 @@ export class RecommendedActivitiesComponent implements OnInit {
 
     ngOnInit() {
         this.activityService.activitiesObservable.subscribe((activities) => {
-            this.activities = activities.splice(0, 6);
+            this.activities = [ ...activities ].splice(0, 6);
         });
     }
 
