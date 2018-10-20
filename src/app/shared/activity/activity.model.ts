@@ -15,6 +15,7 @@ export class ActivityModel {
       name: string;
       image: string;
       phone: string;
+      email: string;
     };
 
     positionLongitude: number; // Kaire desine

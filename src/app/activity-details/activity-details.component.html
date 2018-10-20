@@ -25,7 +25,12 @@
                         </div>
                         <div class="col-sm">
                             <h4>{{activity.contactDetails.name}}</h4>
-                            <small class="text-muted">Tel. {{activity.contactDetails.phone}}</small>
+                            <div class="text-muted d-flex align-items-center my-2">
+                                <mat-icon>phone</mat-icon>
+                                <span class="ml-2">{{activity.contactDetails.phone}}</span></div>
+                            <div class="text-muted d-flex align-items-center my-2">
+                                <mat-icon>email</mat-icon>
+                                <span class="ml-2">{{activity.contactDetails.email}}</span></div>
                         </div>
                     </div>
                 </mat-card-content>
