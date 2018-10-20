@@ -1,4 +1,4 @@
-export enum ActivityTypes {
+export enum ActivityType {
     FOOTBALL = 'Futbolas',
     VOLLEYBALL = 'Tinklinis',
     DANCES = 'Šokiai',

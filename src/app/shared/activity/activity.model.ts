@@ -1,15 +1,18 @@
-import {ActivityTypes} from './activity-types.enum';
+import {ActivityType} from './activity-type.enum';
+import {Gender} from './gender.enum';
+import {Place} from './place.enum';
 
 let uniqueId = 1;
 
 export class ActivityModel {
     id: number;
     name: string;
-    type: ActivityTypes;
+    type: ActivityType;
     imageSrc: string;
     description: string;
     price: number;
     duration: string;
+    gender: Gender[];
     date: Date;
     place: string;
 
@@ -25,15 +28,16 @@ export class ActivityModel {
 
     constructor(data?: {
         name: string;
-        type: ActivityTypes;
+        type: ActivityType;
         imageSrc: string;
         description: string;
         price: number;
         duration: string;
         date: Date;
-        place: string;
+        place: Place;
         positionLongitude: number;
         positionLatitude: number;
+        gender: Gender[];
 
         contactDetails: {
             name: string;
