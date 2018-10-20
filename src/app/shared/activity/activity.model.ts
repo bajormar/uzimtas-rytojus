@@ -32,6 +32,8 @@ export class ActivityModel {
         duration: string;
         date: Date;
         place: string;
+        positionLongitude: number;
+        positionLatitude: number;
 
         contactDetails: {
             name: string;

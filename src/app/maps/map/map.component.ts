@@ -116,7 +116,7 @@ export class MapComponent implements OnInit {
 
         map.on('mousedown', (function (e) {
             console.log(e);
-        });
+        }));
 
         map.on('click', 'unclustered-point', (function (e) {
             const coordinates = e.features[0].geometry.coordinates.slice();
