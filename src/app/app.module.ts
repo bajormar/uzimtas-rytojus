@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCardModule, MatInputModule, MatSelectModule, MatToolbarModule} from '@angular/material';
-import {HomePageModule} from './home-page/home-page.module';
+import {HomePageModule} from './results-page/home-page.module';
 import {MapsModule} from './maps/maps.module';
 import {SharedModule} from './shared/shared.module';
 import {ActivityDetailsModule} from './activity-details/activity-details.module';

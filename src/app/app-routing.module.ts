@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {HomePageComponent} from './home-page/home-page.component';
+import {HomePageComponent} from './results-page/home-page.component';
 import {MapLayoutComponent} from './maps/map-layout/map-layout.component';
 import {MapComponent} from './maps/map/map.component';
 import {ActivityDetailsComponent} from './activity-details/activity-details.component';

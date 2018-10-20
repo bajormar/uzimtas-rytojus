@@ -1,0 +1,17 @@
+:host {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+
+.landing-section {
+    min-height: calc(100vh - 64px - 64px);
+    position: relative;
+
+    .landing-image {
+        width: 100%;
+        height: 100%;
+    }
+}
