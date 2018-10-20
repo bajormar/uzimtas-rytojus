@@ -2,47 +2,48 @@
     <div class="container">
         <div class="filter-form d-flex align-items-center justify-content-center">
             <mat-form-field>
-                <mat-select placeholder="Sporto šaka">
-                    <mat-option>Krepšinis</mat-option>
-                    <mat-option>Futbolas</mat-option>
-                    <mat-option>Šachmatai</mat-option>
-                    <mat-option>Šaškės</mat-option>
-                    <mat-option>Bėgimas</mat-option>
-                    <mat-option>Jodinėjimas</mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-select placeholder="Mikrorajonas">
-                    <mat-option>Krepšinis</mat-option>
-                    <mat-option>Futbolas</mat-option>
-                    <mat-option>Šachmatai</mat-option>
-                    <mat-option>Šaškės</mat-option>
-                    <mat-option>Bėgimas</mat-option>
-                    <mat-option>Jodinėjimas</mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-select placeholder="Laikas">
-                    <mat-option>08:00 - 10:00</mat-option>
-                    <mat-option>10:00 - 12:00</mat-option>
-                    <mat-option>12:00 - 14:00</mat-option>
-                    <mat-option>16:00 - 18:00</mat-option>
-                    <mat-option>20:00 - 22:00</mat-option>
-                    <mat-option>22:00 - 00:00</mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-select placeholder="Amžius">
-                    <mat-option>Vaikams</mat-option>
-                    <mat-option>Suaugusiems</mat-option>
+                <mat-select placeholder="Sporto šaka" [formControl]="form.get('activityField')">
+                    <mat-option value="basketball">Krepšinis</mat-option>
+                    <mat-option value="football">Futbolas</mat-option>
+                    <mat-option value="running">Bėgimas</mat-option>
+                    <mat-option value="horseriding">Jodinėjimas</mat-option>
                 </mat-select>
             </mat-form-field>
 
             <span class="p-2"></span>
-            <button mat-raised-button color="primary">IEŠKOTI</button>
+
+            <mat-form-field>
+                <mat-select placeholder="Veiklos vieta">
+                    <mat-option value="antakalnis">Antakalnis</mat-option>
+                    <mat-option value="justiniskes">Justiniškės</mat-option>
+                    <mat-option value="fabijoniskes">Fabojinškės</mat-option>
+                    <mat-option value="zirmunai">Žirmūnai</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <span class="p-2"></span>
+
+            <mat-form-field>
+                <mat-select placeholder="Laikas">
+                    <mat-option value="1">08:00 - 12:00</mat-option>
+                    <mat-option value="2">10:00 - 14:00</mat-option>
+                    <mat-option value="3">12:00 - 16:00</mat-option>
+                    <mat-option value="4">16:00 - 20:00</mat-option>
+                    <mat-option value="5">20:00 - 24:00</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <span class="p-2"></span>
+
+            <mat-form-field>
+                <mat-select placeholder="Amžius">
+                    <mat-option value="children">Vaikams</mat-option>
+                    <mat-option value="adult">Suaugusiems</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <span class="p-2"></span>
+            <button mat-raised-button color="primary" routerLink="/results">IEŠKOTI</button>
         </div>
     </div>
 

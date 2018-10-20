@@ -11,7 +11,7 @@ import {SharedModule} from './shared/shared.module';
 import {ActivityDetailsModule} from './activity-details/activity-details.module';
 import {RouterModule} from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
     imports: [
@@ -28,6 +28,8 @@ import {FormsModule} from '@angular/forms';
         ActivityDetailsModule,
         MatToolbarModule,
         RouterModule,
+
+        ReactiveFormsModule,
     ],
     declarations: [
         AppComponent,
