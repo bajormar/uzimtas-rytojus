@@ -22,7 +22,16 @@ export class ActivityFilterComponent implements OnInit {
             name: 'Šokiai',
             filterValue: ActivityTypes.DANCES,
             selected: true
-        })],
+        }), new ActivityFilterModel<ActivityTypes>({
+            name: 'Dažasvydis',
+            filterValue: ActivityTypes.PAINT_BALL,
+            selected: true
+        }), new ActivityFilterModel<ActivityTypes>({
+            name: 'Pabėgimo kambarys',
+            filterValue: ActivityTypes.ESCAPE_ROOM,
+            selected: true
+        })
+        ],
         place: [new ActivityFilterModel<string>({
             name: 'Antakalnis',
             filterValue: 'Antakalnis',

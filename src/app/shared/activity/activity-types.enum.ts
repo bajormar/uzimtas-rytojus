@@ -2,6 +2,6 @@ export enum ActivityTypes {
     FOOTBALL,
     VOLLEYBALL,
     DANCES,
-    PAINTBALL,
+    PAINT_BALL,
     ESCAPE_ROOM
 }

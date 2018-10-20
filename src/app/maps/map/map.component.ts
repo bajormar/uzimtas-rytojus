@@ -33,47 +33,26 @@ export class MapComponent implements OnInit {
             style: 'mapbox://styles/mapbox/streets-v9'
         });
 
-        // this.mapService.map.on('mousedown', function (e) {
-        //     console.log(e);
-        // });
+        this.mapService.map.on('load', () => {
+            this.initLayers();
 
-        this.mapService.map.on('load', () => this.test());
-
-        this.activityService.activitiesObservable.subscribe((activities) => {
-            this.activities = activities;
+            this.activityService.activitiesObservable.subscribe((activities) => {
+                this.updateData(activities);
+            });
         });
     }
 
-    public test() {
+    public initLayers() {
         const activityService = this.activityService;
 
-        console.log(activityService);
-
-        this.mapService.map.addSource('activities', {
-            type: 'geojson',
-            cluster: true,
-            clusterMaxZoom: 14, // Max zoom to cluster points on
-            clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
-
-            data: {
-                type: 'FeatureCollection',
-                features: this.activities.map((activity: ActivityModel) => {
-                    return {
-                        type: 'Feature',
-                        properties: {
-                            id: activity.id
-                        },
-                        geometry: {
-                            type: 'Point',
-                            coordinates: [
-                                activity.positionLongitude,
-                                activity.positionLatitude
-                            ]
-                        }
-                    };
-                })
-            }
-        });
+        this.mapService.map.addSource('activities',
+            {
+                type: 'geojson',
+                cluster: true,
+                clusterMaxZoom: 14, // Max zoom to cluster points on
+                clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
+                data: this.getActivityData([])
+            });
 
         const map = this.mapService.map;
 
@@ -175,6 +154,33 @@ export class MapComponent implements OnInit {
             map.getCanvas().style.cursor = '';
         });
 
+    }
+
+    private updateData(activities: ActivityModel[]) {
+        const activitiesSource = this.mapService.map.getSource('activities');
+
+        activitiesSource.setData(this.getActivityData(activities));
+    }
+
+    private getActivityData(activities: ActivityModel[]) {
+        return {
+            type: 'FeatureCollection',
+            features: activities.map((activity: ActivityModel) => {
+                return {
+                    type: 'Feature',
+                    properties: {
+                        id: activity.id
+                    },
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [
+                            activity.positionLongitude,
+                            activity.positionLatitude
+                        ]
+                    }
+                };
+            })
+        };
     }
 }
 
