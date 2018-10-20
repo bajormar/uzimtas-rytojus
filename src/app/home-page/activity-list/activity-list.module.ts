@@ -6,7 +6,7 @@ import {ActivityItemModule} from './activity-item/activity-item.module';
 @NgModule({
     imports: [
         CommonModule,
-        ActivityItemModule
+        ActivityItemModule,
     ],
     declarations: [ActivityListComponent],
     exports: [ActivityListComponent]

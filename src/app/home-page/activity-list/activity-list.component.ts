@@ -13,6 +13,8 @@ export class ActivityListComponent implements OnInit, OnDestroy {
     activities: ActivityModel[];
     activitiesSubscription: Subscription;
 
+    searchQuery: string;
+
     constructor(private activityService: ActivityService) {
     }
 
@@ -20,6 +22,10 @@ export class ActivityListComponent implements OnInit, OnDestroy {
         this.activitiesSubscription = this.activityService.activitiesObservable.subscribe((activities) => {
             this.activities = activities;
         });
+    }
+
+    filterBySearchQuery() {
+        this.activityService.filterBySearchQuery(this.searchQuery);
     }
 
     ngOnDestroy() {

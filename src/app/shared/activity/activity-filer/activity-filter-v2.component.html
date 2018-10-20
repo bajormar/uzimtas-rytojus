@@ -4,34 +4,24 @@
               [class.submitted]="submitted"
               (ngSubmit)="onSubmit()">
             <mat-form-field>
-                <mat-select placeholder="Sporto šaka" [formControl]="form.get('activityField')">
-                    <mat-option value="basketball">Krepšinis</mat-option>
-                    <mat-option value="football">Futbolas</mat-option>
-                    <mat-option value="running">Bėgimas</mat-option>
-                    <mat-option value="horseriding">Jodinėjimas</mat-option>
+                <mat-select placeholder="Sporto šaka" [formControl]="form.get('types')" multiple>
+                    <mat-option *ngFor="let filter of typeFilters" [value]="filter.id">{{filter.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
 
             <span class="p-2"></span>
 
             <mat-form-field>
-                <mat-select placeholder="Veiklos vieta">
-                    <mat-option value="antakalnis">Antakalnis</mat-option>
-                    <mat-option value="justiniskes">Justiniškės</mat-option>
-                    <mat-option value="fabijoniskes">Fabojinškės</mat-option>
-                    <mat-option value="zirmunai">Žirmūnai</mat-option>
+                <mat-select placeholder="Veiklos vieta" [formControl]="form.get('places')" multiple>
+                    <mat-option *ngFor="let filter of placeFilters" [value]="filter.id">{{filter.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
 
             <span class="p-2"></span>
 
             <mat-form-field>
-                <mat-select placeholder="Laikas">
-                    <mat-option value="1">08:00 - 12:00</mat-option>
-                    <mat-option value="2">10:00 - 14:00</mat-option>
-                    <mat-option value="3">12:00 - 16:00</mat-option>
-                    <mat-option value="4">16:00 - 20:00</mat-option>
-                    <mat-option value="5">20:00 - 24:00</mat-option>
+                <mat-select placeholder="Laikas" [formControl]="form.get('times')" multiple>
+                    <mat-option *ngFor="let filter of timeFilters" [value]="filter.id">{{filter.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
 

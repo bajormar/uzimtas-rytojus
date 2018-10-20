@@ -1,9 +1,19 @@
-export class ActivityFilterModel<T> {
+let counter = 0;
+
+export class ActivityFilterModel {
+    id: number;
     name: string;
-    filterValue: T;
+    type: string;
+    value: any;
     selected: boolean;
 
-    constructor(data?: ActivityFilterModel<T>) {
+    constructor(data?: {
+        name: string;
+        type: string;
+        value: any;
+        selected: boolean;
+    }) {
         Object.assign(this, data);
+        this.id = counter++;
     }
 }

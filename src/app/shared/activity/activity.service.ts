@@ -2,16 +2,21 @@ import {Injectable} from '@angular/core';
 import {ActivityModel} from './activity.model';
 import {ActivityTypes} from './activity-types.enum';
 import {BehaviorSubject} from 'rxjs';
+import {ActivityFilterModel} from './activity-filter.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ActivityService {
 
-    private activities = activities;
+    private activities = activitiesData;
+    private filters = activityFiltersData;
 
     private activitiesSubject = new BehaviorSubject<ActivityModel[]>(this.activities);
     activitiesObservable = this.activitiesSubject.asObservable();
+
+    private filtersSubject = new BehaviorSubject<ActivityFilterModel[]>(this.filters);
+    filtersObservable = this.filtersSubject.asObservable();
 
     constructor() {
     }
@@ -28,16 +33,28 @@ export class ActivityService {
         return hours * 60 + minutes < timeTo;
     }
 
-    filter(types: ActivityTypes[], places: string[], timeFrom: number, timeTo: number) {
-        if (!types.length && !places.length) {
-            this.activitiesSubject.next(this.activities);
-            return;
-        }
-        const activities = this.activities.filter(a => {
+    updateFilter(filterId: number, selected: boolean) {
+        const filter = this.filters.find(f => f.id === filterId);
+        filter.selected = selected;
+    }
+
+    filterActivities() {
+        const typeFilters = this.filters.filter(f => f.type === 'type');
+        const placeFilters = this.filters.filter(f => f.type === 'place');
+        const timeFilters = this.filters.filter(f => f.type === 'time');
+
+        const selectedTypes = typeFilters.filter(f => f.selected);
+        const selectedPlaces = placeFilters.filter(f => f.selected);
+        const selectedTimes = timeFilters.filter(f => f.selected);
+
+        const types = (selectedTypes.length > 0 ? selectedTypes : typeFilters).map(f => f.value);
+        const places = (selectedPlaces.length > 0 ? selectedPlaces : placeFilters).map(f => f.value);
+        const times = (selectedTimes.length > 0 ? selectedTimes : timeFilters).map(f => f.value);
+
+        const activities = activitiesData.filter(a => {
             return types.includes(a.type) &&
                 places.includes(a.place) &&
-                this.isActivityBeforeTime(a.date, timeFrom) &&
-                this.isActivityAfterTime(a.date, timeTo);
+                times.some(time => this.isActivityBeforeTime(a.date, time.from) && this.isActivityAfterTime(a.date, time.to));
         });
         this.activitiesSubject.next(activities);
     }
@@ -45,9 +62,13 @@ export class ActivityService {
     getActivity(activityId: number): ActivityModel {
         return this.activities.find(a => a.id === activityId);
     }
+
+    clearFilters() {
+        this.filters = this.filters.map(f => ({...f, selected: false}));
+    }
 }
 
-const activities = [
+const activitiesData = [
     new ActivityModel({
         name: 'Vilniaus futbolo mokykla "ŽAIBAS"',
         imageSrc: 'https://files.slack.com/files-pri/TDFFASP3Q-FDJDZU8LC/954719_546288298740096_398785001_n.jpg',
@@ -227,5 +248,69 @@ const activities = [
             phone: '+370 123 12345',
             email: 'vardenis.pavardenis@gmail.com',
         },
+    })
+];
+
+const activityFiltersData = [
+    new ActivityFilterModel({
+        name: 'Futbolas',
+        type: 'type',
+        value: ActivityTypes.FOOTBALL,
+        selected: false
+    }), new ActivityFilterModel({
+        name: 'Tinklinis',
+        type: 'type',
+        value: ActivityTypes.VOLLEYBALL,
+        selected: false
+    }), new ActivityFilterModel({
+        name: 'Šokiai',
+        type: 'type',
+        value: ActivityTypes.DANCES,
+        selected: false
+    }), new ActivityFilterModel({
+        name: 'Dažasvydis',
+        type: 'type',
+        value: ActivityTypes.PAINT_BALL,
+        selected: false
+    }), new ActivityFilterModel({
+        name: 'Pabėgimo kambarys',
+        type: 'type',
+        value: ActivityTypes.ESCAPE_ROOM,
+        selected: false
+    }), new ActivityFilterModel({
+        name: 'Antakalnis',
+        type: 'place',
+        value: 'Antakalnis',
+        selected: false
+    }), new ActivityFilterModel({
+        name: 'Senamiestis',
+        type: 'place',
+        value: 'Senamiestis',
+        selected: false
+    }), new ActivityFilterModel({
+        name: 'Sauletekis',
+        type: 'place',
+        value: 'Sauletekis',
+        selected: false
+    }), new ActivityFilterModel({
+        name: '08:00 - 12:00',
+        type: 'time',
+        value: {from: 8 * 60, to: 12 * 60},
+        selected: false
+    }), new ActivityFilterModel({
+        name: '12:00 - 16:00',
+        type: 'time',
+        value: {from: 12 * 60, to: 16 * 60},
+        selected: false
+    }), new ActivityFilterModel({
+        name: '16:00 - 20:00',
+        type: 'time',
+        value: {from: 16 * 60, to: 20 * 60},
+        selected: false
+    }), new ActivityFilterModel({
+        name: '20:00 - 24:00',
+        type: 'time',
+        value: {from: 20 * 60, to: 24 * 60},
+        selected: false
     })
 ];

@@ -9,61 +9,24 @@ import {ActivityFilterModel} from '../../shared/activity/activity-filter.model';
     styleUrls: ['./activity-filter.component.scss']
 })
 export class ActivityFilterComponent implements OnInit {
-    filters = {
-        type: [new ActivityFilterModel<ActivityTypes>({
-            name: 'Futbolas',
-            filterValue: ActivityTypes.FOOTBALL,
-            selected: true
-        }), new ActivityFilterModel<ActivityTypes>({
-            name: 'Tinklinis',
-            filterValue: ActivityTypes.VOLLEYBALL,
-            selected: true
-        }), new ActivityFilterModel<ActivityTypes>({
-            name: 'Šokiai',
-            filterValue: ActivityTypes.DANCES,
-            selected: true
-        }), new ActivityFilterModel<ActivityTypes>({
-            name: 'Dažasvydis',
-            filterValue: ActivityTypes.PAINT_BALL,
-            selected: true
-        }), new ActivityFilterModel<ActivityTypes>({
-            name: 'Pabėgimo kambarys',
-            filterValue: ActivityTypes.ESCAPE_ROOM,
-            selected: true
-        })
-        ],
-        place: [new ActivityFilterModel<string>({
-            name: 'Antakalnis',
-            filterValue: 'Antakalnis',
-            selected: true
-        }), new ActivityFilterModel<string>({
-            name: 'Senamiestis',
-            filterValue: 'Senamiestis',
-            selected: true
-        }), new ActivityFilterModel<string>({
-            name: 'Sauletekis',
-            filterValue: 'Sauletekis',
-            selected: true
-        })],
-    };
+    filters: ActivityFilterModel[] = [];
+
+    typeFilters = this.filters.filter(f => f.type === 'type');
+    placeFilters = this.filters.filter(f => f.type === 'place');
 
     timeFrom = 0;
     timeTo = 1440;
 
-    constructor(private activityService: ActivityService) {
-    }
+    constructor(private activityService: ActivityService) {}
 
     ngOnInit() {
+        this.activityService.filtersObservable.subscribe(filters => {
+            this.filters = filters;
+        });
     }
 
-    filterActivities() {
-        const selectedTypes = this.filters.type.filter(f => f.selected);
-        const selectedPlaces = this.filters.place.filter(f => f.selected);
-        const types = (selectedTypes.length > 0 ? selectedTypes : this.filters.type).map(f => f.filterValue);
-        const places = (selectedPlaces.length > 0 ? selectedPlaces : this.filters.place).map(f => f.filterValue);
-        const timeFrom = this.timeFrom;
-        const timeTo = this.timeTo;
-        this.activityService.filter(types, places, timeFrom, timeTo);
+    updateFilter(filter: ActivityFilterModel) {
+        this.activityService.updateFilter(filter.id, filter.selected);
     }
 
     formatTime(time: number) {

@@ -1,23 +1,24 @@
-<div>Tipas</div>
-<div *ngFor="let filter of filters.type">
-    <mat-checkbox color="primary" [(ngModel)]="filter.selected" (ngModelChange)="filterActivities()">{{filter.name}}
-    </mat-checkbox>
-</div>
+<!--<div>Tipas</div>-->
+<!--<div *ngFor="let filter of typeFilters">-->
+    <!--<mat-checkbox color="primary" [(ngModel)]="filter.selected"-->
+                  <!--(ngModelChange)="updateFilter(filter.type, filter)">{{filter.name}}-->
+    <!--</mat-checkbox>-->
+<!--</div>-->
 
-<div>Vieta</div>
-<div *ngFor="let filter of filters.place">
-    <mat-checkbox color="primary" [(ngModel)]="filter.selected" (ngModelChange)="filterActivities()">{{filter.name}}
-    </mat-checkbox>
-</div>
+<!--<div>Vieta</div>-->
+<!--<div *ngFor="let filter of placeFilters">-->
+    <!--<mat-checkbox color="primary" [(ngModel)]="filter.selected" (ngModelChange)="updateFilter(filter.type, filter)">{{filter.name}}-->
+    <!--</mat-checkbox>-->
+<!--</div>-->
 
-<div>Laikas (nuo)</div>
-<div>{{formatTime(timeFrom)}}</div>
-<mat-slider step="15" tickInterval="15" min="0" max="1440" color="primary" [(ngModel)]="timeFrom"
-            (ngModelChange)="filterActivities()"
-            (input)="timeFrom = $event.value"></mat-slider>
+<!--<div>Laikas (nuo)</div>-->
+<!--<div>{{formatTime(timeFrom)}}</div>-->
+<!--<mat-slider step="15" tickInterval="15" min="0" max="1440" color="primary" [(ngModel)]="timeFrom"-->
+            <!--(ngModelChange)="filterActivities()"-->
+            <!--(input)="timeFrom = $event.value"></mat-slider>-->
 
-<div>Laikas (iki)</div>
-<div>{{formatTime(timeTo)}}</div>
-<mat-slider step="15" tickInterval="15" min="0" max="1440" color="primary" [(ngModel)]="timeTo"
-            (ngModelChange)="filterActivities()"
-            (input)="timeTo = $event.value"></mat-slider>
+<!--<div>Laikas (iki)</div>-->
+<!--<div>{{formatTime(timeTo)}}</div>-->
+<!--<mat-slider step="15" tickInterval="15" min="0" max="1440" color="primary" [(ngModel)]="timeTo"-->
+            <!--(ngModelChange)="filterActivities()"-->
+            <!--(input)="timeTo = $event.value"></mat-slider>-->
