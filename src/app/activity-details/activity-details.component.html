@@ -1,49 +1,33 @@
-<div class="container">
-    <mat-card class="mt-4">
-        <mat-card-content>
-            <div class="row">
+<div class="container my-4 ">
+    <div class="row">
+        <div class="col-sm-6">
+            <span>{{activity.type}}</span>
+            <h4>{{activity.name}}</h4>
+            <small class="text-muted">{{activity.description}}</small>
+
+            <hr>
+            <div class="row mt-4">
                 <div class="col-sm-auto">
-                    <img style="max-width: 400px; height: 200px" [src]="activity.imageSrc">
+                    <div class="contact-image-container">
+                        <img class="img img-fluid contact-image" [src]="activity.contactDetails.image">
+                    </div>
                 </div>
                 <div class="col-sm">
-                    <h3>{{activity.name}}</h3>
-                    <small class="text-muted">{{activity.description}}</small>
+                    <h4>{{activity.contactDetails.name}}</h4>
+                    <div class="text-muted d-flex align-items-center my-2">
+                        <mat-icon>phone</mat-icon>
+                        <span class="ml-2">{{activity.contactDetails.phone}}</span></div>
+                    <div class="text-muted d-flex align-items-center my-2">
+                        <mat-icon>email</mat-icon>
+                        <span class="ml-2">{{activity.contactDetails.email}}</span></div>
                 </div>
             </div>
-        </mat-card-content>
-    </mat-card>
-
-    <div class="row">
-        <div class="col-sm">
-            <mat-card class="mt-4">
-                <mat-card-content>
-                    <div class="row">
-                        <div class="col-sm-auto">
-                            <div class="contact-image-container">
-                                <img class="img img-fluid contact-image" [src]="activity.contactDetails.image">
-                            </div>
-                        </div>
-                        <div class="col-sm">
-                            <h4>{{activity.contactDetails.name}}</h4>
-                            <div class="text-muted d-flex align-items-center my-2">
-                                <mat-icon>phone</mat-icon>
-                                <span class="ml-2">{{activity.contactDetails.phone}}</span></div>
-                            <div class="text-muted d-flex align-items-center my-2">
-                                <mat-icon>email</mat-icon>
-                                <span class="ml-2">{{activity.contactDetails.email}}</span></div>
-                        </div>
-                    </div>
-                </mat-card-content>
-            </mat-card>
         </div>
-        <div class="col-sm">
-            <mat-card class="mt-4">
-                <mat-card-content>
-                    <div class="map">
-                        <ur-map></ur-map>
-                    </div>
-                </mat-card-content>
-            </mat-card>
+        <div class="col-sm-6">
+            <img class="img img-fluid mb-4" [src]="activity.imageSrc">
+            <div class="map">
+                <ur-map></ur-map>
+            </div>
         </div>
     </div>
 </div>

@@ -1,20 +1,22 @@
-<mat-card class="my-3 p-0">
-    <mat-card-content class="activity-item">
-        <div class="row">
-            <div class="col-sm-4 pr-0">
-                <img style="width: 100%; height: 100%"
-                     [src]="activity.imageSrc">
+<div class="row my-2">
+    <div class="col-sm-4 pr-0 position-relative">
+        <img style="width: 100%; height: 100%" [src]="activity.imageSrc">
+        <button mat-mini-fab class="star-button" color="primary" (click)="starClick.emit(activity.id)">
+            <mat-icon>{{user.starredActivities.includes(activity.id) ? 'star' : 'star_border'}}</mat-icon>
+        </button>
 
-            </div>
-            <div class="col-sm-8">
-                <div class="p-2">
-                    <h6><a [routerLink]="['details', activity.id]">{{activity.name}}</a></h6>
-                    <div>{{activity.place}} - {{activity.date | date: 'M d, HH:mm'}} - {{activity.duration}}</div>
-                    <small class="text-muted font-xs">{{activity.description | truncate : 150 : "…"}}</small>
-                    <h5 *ngIf="activity.price" class="text-success">{{activity.price}} €</h5>
-                    <h5 *ngIf="!activity.price" class="text-success">Nemokamai</h5>
-                </div>
-            </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="px-2">
+            <div>{{activity.type}}</div>
+            <h6><a [routerLink]="['/details', activity.id]">{{activity.name}}</a></h6>
+            <div>{{activity.place}} - {{activity.date | date: 'M d, HH:mm'}} - {{activity.duration}}</div>
+            <small class="text-muted font-xs py-2">{{activity.description | truncate : 170 : "…"}}</small>
+            <div *ngIf="activity.price" class="text-success">{{activity.price}} € / mėn</div>
+            <div *ngIf="!activity.price" class="text-success">Nemokamai</div>
         </div>
-    </mat-card-content>
-</mat-card>
+    </div>
+</div>
+<hr>
+
+
