@@ -19,7 +19,8 @@ export class LandingPageComponent implements OnInit {
     ngOnInit() {
         this.activityService.clearFilters();
 
-        this.backgroundImage = backgroundImages[this.getRndInteger(0, 7)];
+
+        this.backgroundImage = backgroundImages[this.getRndInteger(0, 6)];
 
         this.activityService.activitiesObservable.subscribe((activities) => {
             this.activities = [...activities].splice(0, 6);
@@ -38,5 +39,4 @@ let backgroundImages = [
     'https://images.unsplash.com/photo-1505784045224-1247b2b29cf3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ec2bdc92a9687b6af5089b335691830e&auto=format&fit=crop&w=1350&q=80',
     'https://images.unsplash.com/photo-1486286701208-1d58e9338013?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4bfa13437e17634e0e4a9213cb7acbfa&auto=format&fit=crop&w=1350&q=80',
     'https://images.unsplash.com/photo-1461567933755-6c82be2197da?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ef4ea123e771440e3633c877e1ee060d&auto=format&fit=crop&w=1489&q=80',
-    '/assets/images/landing-image-1.jpg'
 ];
