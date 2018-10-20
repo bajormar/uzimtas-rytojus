@@ -24,6 +24,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
         ActivityDetailsModule,
         MatToolbarModule,
         RouterModule,
+        MatButtonModule
     ],
     declarations: [
         AppComponent,
