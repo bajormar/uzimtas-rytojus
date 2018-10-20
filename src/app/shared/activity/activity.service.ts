@@ -257,6 +257,11 @@ const typeFiltersData = [new ActivityFilterModel({
     value: ActivityType.VOLLEYBALL,
     selected: false
 }), new ActivityFilterModel({
+    name: ActivityType.BASKETBALL,
+    type: 'type',
+    value: ActivityType.BASKETBALL,
+    selected: false
+}), new ActivityFilterModel({
     name: ActivityType.DANCES,
     type: 'type',
     value: ActivityType.DANCES,
