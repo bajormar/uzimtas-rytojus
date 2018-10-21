@@ -10,10 +10,14 @@ export class MapService {
 
     public map;
 
-    constructor(private userService: UserService) {}
+    private userProfile;
+
+    constructor(private userService: UserService) {
+        this.userService.userObservable.subscribe((up) => this.userProfile = up);
+    }
 
     public get getUserMarker() {
-        return new mapboxgl.Marker().setLngLat([25.27398647019848, 54.71189442459348]);
+        return new mapboxgl.Marker().setLngLat([this.userProfile.positionLongtitude, this.userProfile.positionLatitude]);
     }
 
     public getGeoActivityDisplayLayerSettings() {

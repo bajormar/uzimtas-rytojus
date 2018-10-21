@@ -17,8 +17,7 @@ export class ActivityListComponent implements OnInit, OnDestroy {
 
     user: UserModel;
 
-    constructor(private activityService: ActivityService, private userService: UserService) {
-    }
+    constructor(private activityService: ActivityService, private userService: UserService) {}
 
     ngOnInit() {
         this.activitiesSubscription = this.activityService.activitiesObservable.subscribe((activities) => {
