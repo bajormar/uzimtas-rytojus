@@ -4,7 +4,6 @@ export enum ActivityType {
     VOLLEYBALL = 'Tinklinis',
     DANCES = 'Šokiai',
     PAINT_BALL = 'Dažasvydis',
-    ESCAPE_ROOM = 'Pabėgimo kambarys',
     TENNIS = 'Tenisas',
     SWIMMING_POOL = 'Baseinas',
     HORSERIDING = 'Jodinėjimas',

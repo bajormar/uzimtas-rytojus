@@ -283,11 +283,6 @@ const typeFiltersData = [new ActivityFilterModel({
     value: ActivityType.PAINT_BALL,
     selected: false
 }), new ActivityFilterModel({
-    name: ActivityType.ESCAPE_ROOM,
-    type: 'type',
-    value: ActivityType.ESCAPE_ROOM,
-    selected: false
-}), new ActivityFilterModel({
     name: ActivityType.TENNIS,
     type: 'type',
     value: ActivityType.TENNIS,
