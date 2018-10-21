@@ -116,9 +116,9 @@ const activitiesData = [
         },
     }),
     new ActivityModel({
-        name: 'Dažasvydžio centras',
+        name: 'Krepšinio treniruotė "Šnipiškių žvaigždė"',
         imageSrc: 'https://files.slack.com/files-pri/TDFFASP3Q-FDHSUKG64/final_zaid3.jpg',
-        type: ActivityType.PAINT_BALL,
+        type: ActivityType.BASKETBALL,
         description: 'Dažasvydis - tai yra greitas ir aktyvus žaidimas, kuriame žaidėjai arba komandos varžosi tarpusavyje kas eliminuos daugiau priešininkų, pažymint juos specialiais dažų kamuoliukais.',
         price: 0,
         date: new Date(2018, 9, 23, 19, 0, 0, 0),
@@ -225,8 +225,8 @@ const activitiesData = [
         duration: '1,5 val',
         gender: [Gender.MALE, Gender.FEMALE],
         place: Place.SAULETEKIS,
-        positionLongitude: 25.27398647019848,
-        positionLatitude: 54.71189442459348,
+        positionLongitude: 25.293270769222673,
+        positionLatitude: 54.72252934797942,
         address: 'P.Žadeikos g. 2, LT-06318 Vilnius',
         contactDetails: {
             name: 'Vardenis Pavardenis',

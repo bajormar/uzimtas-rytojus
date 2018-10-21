@@ -12,8 +12,7 @@ export class ActivityDetailsComponent implements OnInit {
 
     activity: ActivityModel;
 
-    constructor(private activityService: ActivityService, private activatedRoute: ActivatedRoute) {
-    }
+    constructor(private activityService: ActivityService, private activatedRoute: ActivatedRoute) {}
 
     ngOnInit() {
         this.activatedRoute.paramMap.subscribe(params => {

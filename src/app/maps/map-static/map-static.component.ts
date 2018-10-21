@@ -3,6 +3,10 @@ import {mapToken} from '../map-token';
 import mapboxgl from 'mapbox-gl';
 import {MapService} from '../map.service';
 import {ActivityModel} from '../../shared/activity/activity.model';
+import {ActivityItemComponent} from '../../results-page/activity-list/activity-item/activity-item.component';
+import {ActivityService} from '../../shared/activity/activity.service';
+import {UserService} from '../../shared/user/user.service';
+import {MatDialog} from '@angular/material';
 
 @Component({
     selector: 'ur-map-static',
@@ -13,10 +17,17 @@ export class MapStaticComponent implements OnInit {
 
     @Input() activities: ActivityModel[] = [];
 
-    constructor(private mapService: MapService) {
+    private userProfile;
+
+    constructor(private mapService: MapService,
+                private matDialog: MatDialog,
+                private activityService: ActivityService,
+                private userService: UserService) {
     }
 
     ngOnInit() {
+        this.userService.userObservable.subscribe((up) => this.userProfile = up);
+
         mapboxgl.accessToken = mapToken;
         const map = new mapboxgl.Map({
             container: 'static-map',
@@ -43,10 +54,10 @@ export class MapStaticComponent implements OnInit {
                 type: 'circle',
                 source: 'activities',
                 paint: {
-                    'circle-color': '#3f51b5',
+                    'circle-color': '#312442',
                     'circle-radius': 10,
                     'circle-stroke-width': 1,
-                    'circle-stroke-color': '#3a4ba5'
+                    'circle-stroke-color': '#312442'
                 }
             });
 
@@ -60,6 +71,25 @@ export class MapStaticComponent implements OnInit {
             });
 
             map.fitBounds(bounds, { padding: 100 });
+
+            map.on('mouseenter', 'unclustered-point', function () {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            map.on('mouseleave', 'unclustered-point', function () {
+                map.getCanvas().style.cursor = '';
+            });
+
+            map.on('click', 'unclustered-point', (function (e) {
+                const activityId = e.features[0].properties.id;
+
+
+                const activity = this.activityService.getActivity(activityId);
+                const dialogRef = this.matDialog.open(ActivityItemComponent);
+                (dialogRef.componentInstance as ActivityItemComponent).activity = activity;
+                (dialogRef.componentInstance as ActivityItemComponent).user = this.userProfile;
+            }).bind(this));
+
         });
 
 
