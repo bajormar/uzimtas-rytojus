@@ -4,6 +4,8 @@ export class UserModel {
     id: number;
     name: string;
     starredActivities: number[];
+    positionLatitude: number;
+    positionLongtitude: number;
 
     constructor(data?: {
         name: string;
@@ -11,5 +13,7 @@ export class UserModel {
     }) {
         Object.assign(this, data);
         this.id = uniqueId++;
+        this.positionLatitude = 0;
+        this.positionLongtitude = 0;
     }
 }

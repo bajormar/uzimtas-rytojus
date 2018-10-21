@@ -125,8 +125,8 @@ const activitiesData = [
         duration: '1,5 val',
         gender: [Gender.MALE, Gender.FEMALE],
         place: Place.SAULETEKIS,
-        positionLongitude: 25.27398647019848,
-        positionLatitude: 54.71189442459348,
+        positionLongitude: 25.338,
+        positionLatitude: 54.7224198,
         address: 'Šv. Stepono g. 17 , LT-01139, Vilnius',
         contactDetails: {
             name: 'Vardenis Pavardenis',
@@ -236,17 +236,17 @@ const activitiesData = [
         },
     }),
     new ActivityModel({
-        name: 'Pabėgimo kambarys - Bėglys',
-        imageSrc: 'https://www.visainfo.lt/media/k2/items/cache/cf8018b7fa2fcee05057522dc61f4a72_L.jpg',
-        type: ActivityType.ESCAPE_ROOM,
-        description: 'Vilniaus Senamiesčio rūsyje „Bėglys“ įkūrė naują galvosūkių ir pabėgimo kambarį – „Senoji Taverna“, kurioje įvairūs keliautojai paliko įvairių įdomių, keistų, kartais egzotiškų daiktų, surašė kelis mįslių tekstus',
-        price: 35,
+        name: 'Saulėtekio žirgynas',
+        imageSrc: 'https://www.geradovana.lt/files/uploaded/programs/IMG_1741_20110921092136133.jpeg',
+        type: ActivityType.HORSERIDING,
+        description: 'Viename didžiausių žirgynų veisiama ir auginama 370 įvairių veislių veislinių žirgų.',
+        price: 50,
         date: new Date(2018, 9, 23, 18, 30, 0, 0),
         duration: '1,5 val',
         gender: [Gender.MALE, Gender.FEMALE],
         place: Place.SAULETEKIS,
-        positionLongitude: 25.273415407973545,
-        positionLatitude: 54.705213007921884,
+        positionLongitude: 25.338,
+        positionLatitude: 54.723,
         address: 'P.Žadeikos g. 2, LT-06318 Vilnius',
         contactDetails: {
             name: 'Vardenis Pavardenis',
@@ -291,6 +291,11 @@ const typeFiltersData = [new ActivityFilterModel({
     name: ActivityType.TENNIS,
     type: 'type',
     value: ActivityType.TENNIS,
+    selected: false
+}), new ActivityFilterModel({
+    name: ActivityType.HORSERIDING,
+    type: 'type',
+    value: ActivityType.HORSERIDING,
     selected: false
 })];
 

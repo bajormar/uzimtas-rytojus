@@ -11,7 +11,10 @@
             <div class="type-bar">{{activity.type}}</div>
             <mat-card-content class="pt-2">
                 <div>
-                    <small class="text-muted">{{ activity.place }}</small>
+                    <small class="text-muted">{{ activity.place }} <ng-container *ngIf="distances[activity.id] !== undefined">
+                        - {{distances[activity.id]}} km
+                    </ng-container></small>
+
                 </div>
                 <div>
                     <a [routerLink]="['details', activity.id]">{{activity.name}}</a>

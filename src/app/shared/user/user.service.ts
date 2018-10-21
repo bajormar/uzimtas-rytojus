@@ -11,11 +11,20 @@ export class UserService {
     userObservable = this.userSubject.asObservable();
 
     constructor() {
+        let user = this.userSubject.getValue();
         const userJson = localStorage.getItem('user');
         if (userJson) {
-            this.userSubject.next(JSON.parse(userJson));
+            user = JSON.parse(userJson);
+            this.userSubject.next(user);
         }
 
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position => {
+                user.positionLatitude = position.coords.latitude;
+                user.positionLongtitude = position.coords.longitude;
+                this.userSubject.next(user);
+            }));
+        }
     }
 
     starActivity(activityId: number) {
