@@ -87,7 +87,6 @@ export class MapComponent implements OnInit {
         }));
 
         map.on('click', 'unclustered-point', (function (e) {
-            const coordinates = e.features[0].geometry.coordinates.slice();
             const activityId = e.features[0].properties.id;
 
 
