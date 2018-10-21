@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ActivityModel} from '../shared/activity/activity.model';
+import mapboxgl from 'mapbox-gl';
+import {UserService} from '../shared/user/user.service';
 
 @Injectable({
     providedIn: 'root'
@@ -8,7 +10,10 @@ export class MapService {
 
     public map;
 
-    constructor() {
+    constructor(private userService: UserService) {}
+
+    public get getUserMarker() {
+        return new mapboxgl.Marker().setLngLat([25.27398647019848, 54.71189442459348]);
     }
 
     public getGeoActivityDisplayLayerSettings() {

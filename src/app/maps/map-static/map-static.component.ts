@@ -61,6 +61,8 @@ export class MapStaticComponent implements OnInit {
                 }
             });
 
+            this.mapService.getUserMarker.addTo(map);
+
             const bounds = new mapboxgl.LngLatBounds();
 
             this.activities.forEach((activity) => {
