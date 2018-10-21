@@ -9,7 +9,7 @@
         <div class="px-2">
             <div>{{activity.type}}</div>
             <h6><a [routerLink]="['/details', activity.id]">{{activity.name}}</a></h6>
-            <div>{{activity.place}} - {{activity.date | date: 'M d, HH:mm'}} - {{activity.duration}}</div>
+            <div>{{activity.place}} - {{activity.date | date: 'HH:mm'}} - {{activity.duration}}</div>
             <small class="text-muted font-xs py-2">{{activity.description | truncate : 170 : "…"}}</small>
             <div *ngIf="activity.price" class="text-success">{{activity.price}} € / mėn</div>
             <div *ngIf="!activity.price" class="text-success">Nemokamai</div>

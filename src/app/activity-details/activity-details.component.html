@@ -3,8 +3,21 @@
         <div class="col-sm-6">
             <span>{{activity.type}}</span>
             <h4>{{activity.name}}</h4>
-            <div>{{activity.address}}</div>
+            <div class="mb-4">{{activity.address}}</div>
+
             <small class="text-muted">{{activity.description}}</small>
+
+            <h6 class="mt-4">Detalesnė informacija</h6>
+
+            <small class="text-muted d-flex align-items-center my-2">
+                <div>Užsiėmimo pradžia:</div>
+                <span class="ml-2">{{activity.date | date: 'HH:mm'}}</span>
+            </small>
+
+            <small class="text-muted d-flex align-items-center my-2">
+                <div>Užsiėmimo trukmė:</div>
+                <span class="ml-2">{{activity.duration}}</span>
+            </small>
 
             <hr>
             <div class="row mt-4">
