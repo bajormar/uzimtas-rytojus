@@ -10,6 +10,7 @@ import {ActivityModel} from '../shared/activity/activity.model';
 export class LandingPageComponent implements OnInit {
 
     public backgroundImage;
+    public backgroundQoute;
 
     public activities: ActivityModel[] = [];
 
@@ -20,7 +21,8 @@ export class LandingPageComponent implements OnInit {
         this.activityService.clearFilters();
 
 
-        this.backgroundImage = backgroundImages[this.getRndInteger(0, 6)];
+        this.backgroundImage = backgroundImages[this.getRndInteger(0, backgroundImages.length)];
+        this.backgroundQoute = backgroundQoutes[this.getRndInteger(0, backgroundQoutes.length)];
 
         this.activityService.activitiesObservable.subscribe((activities) => {
             this.activities = activities;
@@ -39,4 +41,10 @@ const backgroundImages = [
     'https://images.unsplash.com/photo-1505784045224-1247b2b29cf3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ec2bdc92a9687b6af5089b335691830e&auto=format&fit=crop&w=1350&q=80',
     'https://images.unsplash.com/photo-1486286701208-1d58e9338013?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4bfa13437e17634e0e4a9213cb7acbfa&auto=format&fit=crop&w=1350&q=80',
     'https://images.unsplash.com/photo-1461567933755-6c82be2197da?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ef4ea123e771440e3633c877e1ee060d&auto=format&fit=crop&w=1489&q=80',
+];
+
+const backgroundQoutes = [
+    'Jau geriau vienas žmogus parodo, kaip sportuoti, nei penkiasdešimt pasakotų apie tai.',
+    'Futbolas nesukuria charakterio, jis atskleidžia charakterį.',
+    'Vakar praėjo, rytoj dar neišaušo – padarykit tai dabar. Povilas Panavas'
 ];
