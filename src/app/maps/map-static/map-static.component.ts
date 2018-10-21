@@ -72,6 +72,13 @@ export class MapStaticComponent implements OnInit {
 
             map.fitBounds(bounds, { padding: 100 });
 
+            map.on('mouseenter', 'unclustered-point', function () {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            map.on('mouseleave', 'unclustered-point', function () {
+                map.getCanvas().style.cursor = '';
+            });
 
             map.on('click', 'unclustered-point', (function (e) {
                 const activityId = e.features[0].properties.id;
