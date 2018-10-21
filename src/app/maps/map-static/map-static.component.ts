@@ -43,10 +43,10 @@ export class MapStaticComponent implements OnInit {
                 type: 'circle',
                 source: 'activities',
                 paint: {
-                    'circle-color': '#3f51b5',
+                    'circle-color': '#312442',
                     'circle-radius': 10,
                     'circle-stroke-width': 1,
-                    'circle-stroke-color': '#3a4ba5'
+                    'circle-stroke-color': '#312442'
                 }
             });
 

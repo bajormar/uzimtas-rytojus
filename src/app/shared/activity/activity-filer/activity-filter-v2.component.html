@@ -1,65 +1,62 @@
 <div class="filter-container">
-    <div class="container ">
-        <div style="position: absolute; left: 0; right: 0; top: 0; bottom: 0"></div>
-        <form class="filter-form d-flex align-items-center justify-content-center"
-              [class.submitted]="resultsPage"
-              (ngSubmit)="onSubmit()">
-            <mat-card class="container" [ngClass]="{'px-0 pt-2 pb-0': resultsPage}">
-                <div class="d-flex justify-content-center align-items-center">
+    <form class="filter-form d-flex align-items-center justify-content-center"
+          [class.submitted]="resultsPage"
+          (ngSubmit)="onSubmit()">
+        <mat-card class="container px-0 pt-2 pb-0">
+            <div class="d-flex justify-content-center align-items-center">
 
-                    <span class="p-2"></span>
+                <span class="p-2"></span>
 
-                    <mat-form-field>
-                        <mat-select placeholder="Sporto šaka" [formControl]="form.get('types')" multiple (selectionChange)="onFilterChange()">
-                            <mat-option *ngFor="let filter of typeFilters" [value]="filter.id">{{filter.name}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                <mat-form-field>
+                    <mat-select placeholder="Sporto šaka" [formControl]="form.get('types')" multiple (selectionChange)="onFilterChange()">
+                        <mat-option *ngFor="let filter of typeFilters" [value]="filter.id">{{filter.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
 
-                    <span class="p-2"></span>
+                <span class="p-2"></span>
 
-                    <mat-form-field>
-                        <mat-select placeholder="Veiklos vieta" [formControl]="form.get('places')" multiple (selectionChange)="onFilterChange()">
-                            <mat-option *ngFor="let filter of placeFilters" [value]="filter.id">{{filter.name}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                <mat-form-field>
+                    <mat-select placeholder="Veiklos vieta" [formControl]="form.get('places')" multiple (selectionChange)="onFilterChange()">
+                        <mat-option *ngFor="let filter of placeFilters" [value]="filter.id">{{filter.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
 
-                    <span class="p-2"></span>
+                <span class="p-2"></span>
 
-                    <mat-form-field>
-                        <mat-select placeholder="Laikas" [formControl]="form.get('times')" multiple (selectionChange)="onFilterChange()">
-                            <mat-option *ngFor="let filter of timeFilters" [value]="filter.id">{{filter.name}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                <mat-form-field>
+                    <mat-select placeholder="Laikas" [formControl]="form.get('times')" multiple (selectionChange)="onFilterChange()">
+                        <mat-option *ngFor="let filter of timeFilters" [value]="filter.id">{{filter.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
 
-                    <span class="p-2"></span>
+                <span class="p-2"></span>
 
-                    <mat-form-field>
-                        <mat-select placeholder="Lytis" [formControl]="form.get('genders')" multiple (selectionChange)="onFilterChange()">
-                            <mat-option *ngFor="let filter of genderFilters" [value]="filter.id">{{filter.name}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                <mat-form-field>
+                    <mat-select placeholder="Lytis" [formControl]="form.get('genders')" multiple (selectionChange)="onFilterChange()">
+                        <mat-option *ngFor="let filter of genderFilters" [value]="filter.id">{{filter.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
 
-                    <!--<mat-form-field>-->
-                        <!--<mat-select placeholder="Rodyti žemėlapį" [formControl]="form.get('showMap')" multiple>-->
-                            <!--<mat-option [value]="true">Taip</mat-option>-->
-                            <!--<mat-option [value]="false">Ne</mat-option>-->
-                        <!--</mat-select>-->
-                    <!--</mat-form-field>-->
+                <!--<mat-form-field>-->
+                <!--<mat-select placeholder="Rodyti žemėlapį" [formControl]="form.get('showMap')" multiple>-->
+                <!--<mat-option [value]="true">Taip</mat-option>-->
+                <!--<mat-option [value]="false">Ne</mat-option>-->
+                <!--</mat-select>-->
+                <!--</mat-form-field>-->
 
 
-                    <span class="p-2"></span>
+                <span class="p-2"></span>
 
-                    <div *ngIf="!resultsPage">
-                        <button mat-raised-button color="primary">IEŠKOTI</button>
-                    </div>
-
+                <div *ngIf="!resultsPage">
+                    <button mat-raised-button color="primary">IEŠKOTI</button>
                 </div>
-            </mat-card>
 
-        </form>
-    </div>
+            </div>
+        </mat-card>
+
+    </form>
 </div>

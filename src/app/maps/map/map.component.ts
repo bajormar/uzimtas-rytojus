@@ -5,6 +5,10 @@ import {ActivityService} from '../../shared/activity/activity.service';
 import {MapService} from '../map.service';
 import {ActivityModel} from '../../shared/activity/activity.model';
 import {mapToken} from '../map-token';
+import {MatDialog} from '@angular/material';
+import {ActivityDetailsComponent} from '../../activity-details/activity-details.component';
+import {ActivityItemComponent} from '../../results-page/activity-list/activity-item/activity-item.component';
+import {UserService} from '../../shared/user/user.service';
 
 @Component({
     selector: 'ur-map',
@@ -20,12 +24,20 @@ export class MapComponent implements OnInit {
 
     public activities = [];
 
+    public userProfile;
+
     constructor(private elRef: ElementRef,
                 private activityService: ActivityService,
-                private mapService: MapService) {
+                private mapService: MapService,
+                private userService: UserService,
+                private matDialog: MatDialog) {
     }
 
     ngOnInit() {
+        this.userService.userObservable.subscribe((user) => {
+            this.userProfile = user;
+        });
+
         mapboxgl.accessToken = mapToken;
         this.mapService.map = new mapboxgl.Map({
             container: 'map',
@@ -57,14 +69,14 @@ export class MapComponent implements OnInit {
         map.addLayer(this.mapService.createActivityLayer());
 
         map.addLayer({
-            id: "cluster-count",
-            type: "symbol",
-            source: "activities",
-            filter: ["has", "point_count"],
+            id: 'cluster-count',
+            type: 'symbol',
+            source: 'activities',
+            filter: ['has', 'point_count'],
             layout: {
-                "text-field": "{point_count_abbreviated}",
-                "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
-                "text-size": 12
+                'text-field': '{point_count_abbreviated}',
+                'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+                'text-size': 12
             }
         });
 
@@ -78,23 +90,15 @@ export class MapComponent implements OnInit {
             const coordinates = e.features[0].geometry.coordinates.slice();
             const activityId = e.features[0].properties.id;
 
+
             const activity = activityService.getActivity(activityId);
-
-            // Ensure that if the map is zoomed out such that multiple
-            // copies of the feature are visible, the popup appears
-            // over the copy being pointed to.
-            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-            }
-
-            new mapboxgl.Popup()
-                .setLngLat(coordinates)
-                .setHTML(`<b>${ activity.name }</b>`)
-                .addTo(map);
+            const dialogRef = this.matDialog.open(ActivityItemComponent);
+            (dialogRef.componentInstance as ActivityItemComponent).activity = activity;
+            (dialogRef.componentInstance as ActivityItemComponent).user = this.userProfile;
         }).bind(this));
 
         map.on('click', 'clusters', function (e) {
-            var features = map.queryRenderedFeatures(e.point, { layers: ['clusters'] });
+            var features = map.queryRenderedFeatures(e.point, {layers: ['clusters']});
             var clusterId = features[0].properties.cluster_id;
             map.getSource('activities').getClusterExpansionZoom(clusterId, function (err, zoom) {
                 if (err)
@@ -105,6 +109,14 @@ export class MapComponent implements OnInit {
                     zoom: zoom
                 });
             });
+        });
+
+        map.on('mouseenter', 'unclustered-point', function () {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+
+        map.on('mouseleave', 'unclustered-point', function () {
+            map.getCanvas().style.cursor = '';
         });
 
         map.on('mouseenter', 'clusters', function () {

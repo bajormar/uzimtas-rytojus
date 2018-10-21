@@ -18,7 +18,7 @@ export class MapService {
             source: 'activities',
             filter: ['!', ['has', 'point_count']],
             paint: {
-                'circle-color': '#11b4da',
+                'circle-color': '#312442',
                 'circle-radius': 10,
                 'circle-stroke-width': 1,
                 'circle-stroke-color': '#fff'
@@ -79,11 +79,11 @@ export class MapService {
                 'circle-color': [
                     'step',
                     ['get', 'point_count'],
-                    '#51bbd6',
+                    '#d6cf31',
                     4,
-                    '#f1f075',
+                    '#f1782f',
                     6,
-                    '#f28cb1'
+                    '#f22f14'
                 ],
                 'circle-radius': [
                     'step',
