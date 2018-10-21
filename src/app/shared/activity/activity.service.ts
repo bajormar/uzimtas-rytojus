@@ -85,9 +85,9 @@ const activitiesData = [
         duration: '1 val',
         place: Place.ANTAKALNIS,
         gender: [Gender.MALE, Gender.FEMALE],
-        positionLongitude: 25.245184555401494,
-        positionLatitude: 54.710794080190624,
-        address: 'P.Žadeikos g. 2, LT-06318 Vilnius',
+        positionLongitude: 25.314211,
+        positionLatitude: 54.718006,
+        address: 'Antakalnio g. 2, Vilnius',
         contactDetails: {
             name: 'Vardenis Pavardenis',
             image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
@@ -105,9 +105,9 @@ const activitiesData = [
         duration: '2 val',
         gender: [Gender.MALE, Gender.FEMALE],
         place: Place.SENAMIESTIS,
-        positionLongitude: 25.289228886661476,
-        positionLatitude: 54.71620389718555,
-        address: 'P.Žadeikos g. 2, LT-06318 Vilnius',
+        positionLongitude: 25.282840,
+        positionLatitude: 54.687745,
+        address: 'Gedimino pr 9, Vilnius',
         contactDetails: {
             name: 'Vardenis Pavardenis',
             image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
@@ -116,18 +116,18 @@ const activitiesData = [
         },
     }),
     new ActivityModel({
-        name: 'Krepšinio treniruotė "Šnipiškių žvaigždė"',
+        name: 'Krepšinio treniruotė "Super talentas"',
         imageSrc: 'https://files.slack.com/files-pri/TDFFASP3Q-FDHSUKG64/final_zaid3.jpg',
         type: ActivityType.BASKETBALL,
-        description: 'Dažasvydis - tai yra greitas ir aktyvus žaidimas, kuriame žaidėjai arba komandos varžosi tarpusavyje kas eliminuos daugiau priešininkų, pažymint juos specialiais dažų kamuoliukais.',
-        price: 0,
+        description: 'Treneriai ir dalyvaujantys svečiai ves krepšinio treniruotes visiems susidomėjusiems krepšiniu, kiekvienas atvykęs bus supažindintas su krepšinio technika, turės galimybę dalyvauti varžybose vienas prieš vieną bei išbandyti laimę metimų konkursuose.',
+        price: 5,
         date: new Date(2018, 9, 23, 19, 0, 0, 0),
         duration: '1,5 val',
         gender: [Gender.MALE, Gender.FEMALE],
-        place: Place.SAULETEKIS,
-        positionLongitude: 25.338,
-        positionLatitude: 54.7224198,
-        address: 'Šv. Stepono g. 17 , LT-01139, Vilnius',
+        place: Place.ANTAKALNIS,
+        positionLongitude: 25.315050,
+        positionLatitude: 54.694899,
+        address: 'Mildos g. 13 , Vilnius',
         contactDetails: {
             name: 'Vardenis Pavardenis',
             image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
@@ -145,9 +145,9 @@ const activitiesData = [
         duration: '1 val',
         gender: [Gender.FEMALE],
         place: Place.ZIRMUNAI,
-        positionLongitude: 25.299615559754074,
-        positionLatitude: 54.71077170084095,
-        address: 'P.Žadeikos g. 2, LT-06318 Vilnius',
+        positionLongitude: 25.307802,
+        positionLatitude: 54.716567,
+        address: 'Žirmūnų g. 86, LT-06318 Vilnius',
         contactDetails: {
             name: 'Vardenis Pavardenis',
             image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
@@ -156,7 +156,7 @@ const activitiesData = [
         },
     }),
     new ActivityModel({
-        name: 'SEB Arena',
+        name: 'SEB Arena - Tenisas',
         imageSrc: 'https://slack-imgs.com/?c=1&url=https%3A%2F%2Fg1.dcdn.lt%2Fimages%2Fpix%2Fmoteru-tenisas-68376474.jpg',
         type: ActivityType.TENNIS,
         description: 'SEB arena – daugiafunkcinis sporto, paslaugų ir sveikatingumo centras visai šeimai. Tai didžiausias uždarų teniso kortų centras Baltijos šalyse, kuriame įrengta 14 vidaus HARD teniso aikštelių, 6 vidaus kiliminės dangos aikštelės, 4 lauko HARD teniso aikštelės ir 4 lauko dirbtinės žolės teniso aikštelės',
@@ -164,10 +164,10 @@ const activitiesData = [
         date: new Date(2018, 9, 23, 20, 0, 0, 0),
         duration: '1,5 val',
         gender: [Gender.MALE],
-        place: Place.SAULETEKIS,
-        positionLongitude: 25.253225457843115,
-        positionLatitude: 54.712196205016056,
-        address: 'P.Žadeikos g. 2, LT-06318 Vilnius',
+        place: Place.VIRSULISKES,
+        positionLongitude: 25.234854,
+        positionLatitude: 54.707043,
+        address: 'Ažuolyno g. 9, Vilnius',
         contactDetails: {
             name: 'Vardenis Pavardenis',
             image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
@@ -176,18 +176,18 @@ const activitiesData = [
         },
     }),
     new ActivityModel({
-        name: 'Pabėgimo kambarys - Užkoduota',
-        imageSrc: 'https://www.laisvalaikiodovanos.lt/public/photos/products/09/22/25/64566_photo_r.jpg?version=1506675112',
-        type: ActivityType.ESCAPE_ROOM,
-        description: 'Pabėgimo kambarys „Užkoduota“ – tai erdvė, kurioje jūs būsite užrakinti ir, spręsdami galvosūkius, ieškodami užuominų ir pasitelkdami savo logiką, turėsite iš jo pabėgti.',
+        name: 'SEB arena - skvošas',
+        imageSrc: 'http://www.viss.lt/dati/zanzibara/zanzibara%20(6).jpg',
+        type: ActivityType.SQUASH,
+        description: 'Vis daugiau susidomėjimo Lietuvoje sulaukiantis skvošas pasižymi tuo, kad čia lygiai gali kovoti ir vyrai, ir moterys. Nes svarbiausia – ne jėga, o mąstymas',
         price: 40,
-        date: new Date(2018, 9, 23, 17, 0, 0, 0),
-        duration: '1,5 val',
-        gender: [Gender.MALE, Gender.FEMALE],
-        place: Place.SAULETEKIS,
-        positionLongitude: 25.24709701540803,
-        positionLatitude: 54.70899092953229,
-        address: 'P.Žadeikos g. 2, LT-06318 Vilnius',
+        date: new Date(2018, 9, 23, 19, 0, 0, 0),
+        duration: '2 val',
+        gender: [Gender.FEMALE],
+        place: Place.VIRSULISKES,
+        positionLongitude: 25.234854,
+        positionLatitude: 54.707043,
+        address: 'Ažuolyno g. 9, Vilnius',
         contactDetails: {
             name: 'Vardenis Pavardenis',
             image: 'http://www.ve.lt/uploads/img/catalog/1/1633/644/zalgirio-treneris-sarunas-jasikevicius-jaunimas-nelabai-naudojosi-savo-sansais.jpg',
@@ -204,9 +204,9 @@ const activitiesData = [
         date: new Date(2018, 9, 23, 21, 0, 0, 0),
         duration: '1,5 val',
         gender: [Gender.MALE, Gender.FEMALE],
-        place: Place.SAULETEKIS,
-        positionLongitude: 25.290101077401772,
-        positionLatitude: 54.69580304303838,
+        place: Place.ZIRMUNAI,
+        positionLongitude: 25.296019,
+        positionLatitude: 54.705339,
         address: 'P.Žadeikos g. 2, LT-06318 Vilnius',
         contactDetails: {
             name: 'Vardenis Pavardenis',
@@ -225,8 +225,8 @@ const activitiesData = [
         duration: '1,5 val',
         gender: [Gender.MALE, Gender.FEMALE],
         place: Place.SAULETEKIS,
-        positionLongitude: 25.293270769222673,
-        positionLatitude: 54.72252934797942,
+        positionLongitude: 25.35,
+        positionLatitude: 54.72,
         address: 'P.Žadeikos g. 2, LT-06318 Vilnius',
         contactDetails: {
             name: 'Vardenis Pavardenis',
@@ -246,7 +246,7 @@ const activitiesData = [
         gender: [Gender.MALE, Gender.FEMALE],
         place: Place.SAULETEKIS,
         positionLongitude: 25.338,
-        positionLatitude: 54.723,
+        positionLatitude: 54.73,
         address: 'P.Žadeikos g. 2, LT-06318 Vilnius',
         contactDetails: {
             name: 'Vardenis Pavardenis',
@@ -297,6 +297,11 @@ const typeFiltersData = [new ActivityFilterModel({
     type: 'type',
     value: ActivityType.HORSERIDING,
     selected: false
+}), new ActivityFilterModel({
+    name: ActivityType.SQUASH,
+    type: 'type',
+    value: ActivityType.SQUASH,
+    selected: false
 })];
 
 const placeFiltersData = [new ActivityFilterModel({
@@ -318,6 +323,11 @@ const placeFiltersData = [new ActivityFilterModel({
     name: Place.ZIRMUNAI,
     type: 'place',
     value: Place.ZIRMUNAI,
+    selected: false
+}), new ActivityFilterModel({
+    name: Place.VIRSULISKES,
+    type: 'place',
+    value: Place.VIRSULISKES,
     selected: false
 })];
 
