@@ -1,16 +1,15 @@
-<div class="container-fluid  h-100">
-    <div class="row  h-100">
-        <div class="col-sm px-0">
-            <div>
-                <ur-activity-filter-v2></ur-activity-filter-v2>
-            </div>
-            <div class="activity-list">
-                <ur-activity-list></ur-activity-list>
-            </div>
+<div class="container-fluid  h-100" style="background-color: #e6e6e6">
+    <div class="row">
+        <div class="col-12 mb-1" style="position: fixed; z-index: 99">
+            <ur-activity-filter-v2></ur-activity-filter-v2>
+        </div>
 
+        <div class="col-6 px-0" style="padding-top: 75px">
+            <ur-activity-list></ur-activity-list>
         </div>
-        <div class="col-sm px-0">
-            <ur-map class="map"></ur-map>
-        </div>
+
+        <mat-card class="result-map p-0 mr-2">
+            <ur-map></ur-map>
+        </mat-card>
     </div>
 </div>

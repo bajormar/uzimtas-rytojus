@@ -1,9 +1,8 @@
-<div class="container-fluid">
-    <ng-container *ngFor="let activity of activities">
+<div class="activity-list container-fluid pt-2">
+    <mat-card class="mb-2" *ngFor="let activity of activities">
         <ur-activity-item
             [activity]="activity"
             [user]="user"
             (starClick)="changeStarState($event)"></ur-activity-item>
-        <hr>
-    </ng-container>
+    </mat-card>
 </div>

@@ -7,14 +7,14 @@
 }
 
 .landing-page-menu {
-    position: absolute;
+    position: fixed;
     overflow: hidden;
     top: 0;
     left: 0;
     right: 0;
     z-index: 3;
 
-    background-color: rgba(49, 36, 66, 0.2);
+    background-color: rgba(49, 36, 66, 0.6);
 }
 /deep/ {
 .landing-section {
@@ -33,7 +33,7 @@
     }
 
     .filter {
-        background-color: rgba(49, 36, 66, 0.22);
+        background-color: rgba(0, 0, 0, 0.3);
     }
 }
 }
