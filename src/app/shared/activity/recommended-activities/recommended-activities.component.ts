@@ -70,7 +70,7 @@ export class RecommendedActivitiesComponent implements OnInit {
                 return distance1 - distance2;
             });
 
-            this.shownActivities = shuffleArray(sorted).slice(0, 6);
+            this.shownActivities = shuffleArray(sorted.slice(0, 6));
         });
     }
 
